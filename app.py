@@ -7,12 +7,14 @@ from pathlib import Path
 import re
 from typing import TypedDict
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 from dotenv import load_dotenv
 from openaq import OpenAQ
 from openaq.core.exceptions import HTTPRateLimitError, OpenAQError
+from scipy.stats import binom, norm, poisson
 
 
 DATA_CACHE_DIR = Path(__file__).parent / "data_cache"
@@ -577,6 +579,196 @@ def format_date_range(data: pd.DataFrame) -> tuple[date, date]:
     return data["datetime"].min().date(), data["datetime"].max().date()
 
 
+def valid_series(data: pd.DataFrame, column: str) -> pd.Series:
+    """Return finite numeric observations without treating zero as missing."""
+    values = pd.to_numeric(data[column], errors="coerce").dropna()
+    return values[np.isfinite(values)]
+
+
+def probability_sentence(probability: float) -> str:
+    """Explain a probability in simple percentage language."""
+    return f"{probability:.1%} ({probability:.4f})"
+
+
+def render_unit_ii(
+    data: pd.DataFrame,
+    pollutant: str,
+    threshold: float,
+    unit: str,
+    variable_y: str,
+) -> None:
+    """Render the Unit II probability and distribution topics in tabs."""
+    values = valid_series(data, pollutant)
+    if len(values) < 2:
+        st.warning("Insufficient valid data for this analysis.")
+        return
+
+    st.subheader(f"Unit II: Probability and Distributions — {display_name(pollutant)}")
+    tabs = st.tabs(
+        [
+            "Probability", "Bayes Theorem", "Random Variables",
+            "Binomial", "Poisson", "Normal Distribution", "Z-Score",
+            "Normal Approximation", "Probability Insights",
+        ]
+    )
+
+    exceed = values > threshold
+    p_exceed = float(exceed.mean())
+    with tabs[0]:
+        st.markdown("### Basic probability")
+        st.write(
+            f"Success is defined as `{display_name(pollutant)} > {threshold:g} {unit}`."
+        )
+        st.metric("P(pollutant exceeds threshold)", probability_sentence(p_exceed))
+        st.latex(r"P(E) = \frac{\text{number of exceedances}}{\text{valid observations}}")
+        st.write(
+            f"{int(exceed.sum())} of {len(values)} valid observations exceed the threshold."
+        )
+        paired = data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        if len(paired) >= 2 and variable_y != pollutant:
+            condition = paired[variable_y] > threshold
+            conditional = float((paired[pollutant] > threshold)[condition].mean()) if condition.any() else np.nan
+            st.markdown("### Conditional probability")
+            st.metric(
+                f"P({display_name(pollutant)} > threshold | {display_name(variable_y)} > threshold)",
+                "Insufficient data" if pd.isna(conditional) else probability_sentence(conditional),
+            )
+            st.latex(r"P(A|B) = \frac{P(A \cap B)}{P(B)}")
+        else:
+            st.info("Choose a different comparison variable with at least two paired observations.")
+
+    with tabs[1]:
+        st.markdown("### Bayes theorem")
+        st.write("Define A as the selected pollutant exceeding its threshold and B as the comparison variable exceeding the same threshold.")
+        paired = data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        if len(paired) < 2 or variable_y == pollutant:
+            st.warning("Choose two different variables with at least two paired observations.")
+        else:
+            event_a = paired[pollutant] > threshold
+            event_b = paired[variable_y] > threshold
+            p_a, p_b = float(event_a.mean()), float(event_b.mean())
+            p_b_given_a = float(event_b[event_a].mean()) if event_a.any() else np.nan
+            p_a_given_b = float(event_a[event_b].mean()) if event_b.any() else np.nan
+            st.write(f"P(A) = {probability_sentence(p_a)}")
+            st.write(f"P(B) = {probability_sentence(p_b)}")
+            st.write(f"P(B|A) = {probability_sentence(p_b_given_a)}")
+            st.write(f"P(A|B) direct = {probability_sentence(p_a_given_b)}")
+            bayes = p_b_given_a * p_a / p_b if p_b else np.nan
+            st.latex(r"P(A|B) = \frac{P(B|A)P(A)}{P(B)}")
+            st.metric("Bayes result", "Insufficient data" if pd.isna(bayes) else probability_sentence(bayes))
+            if not pd.isna(bayes):
+                st.info("The Bayes result should match the direct conditional probability up to rounding.")
+
+    with tabs[2]:
+        st.markdown("### Random variable")
+        st.write(
+            f"Each valid {display_name(pollutant)} measurement can be viewed as a "
+            "continuous random variable because it is a numerical measurement."
+        )
+        st.dataframe(
+            pd.DataFrame(
+                {
+                    "Distribution information": ["Valid observations", "Minimum", "Mean", "Standard deviation", "Maximum"],
+                    "Value": [str(len(values)), f"{values.min():.4g}", f"{values.mean():.4g}", f"{values.std():.4g}", f"{values.max():.4g}"],
+                }
+            ),
+            hide_index=True,
+        )
+        st.write("The sample values below are observations from this random variable.")
+        st.dataframe(values.head(15).rename("Value").to_frame(), width="stretch")
+
+    with tabs[3]:
+        st.markdown("### Binomial distribution")
+        n = st.number_input("Number of trials (n)", min_value=1, max_value=1000, value=10, key="binom_n")
+        k = st.number_input("Number of successes (k)", min_value=0, max_value=1000, value=2, key="binom_k")
+        probability = float(binom.pmf(k, n, p_exceed)) if k <= n else 0.0
+        st.latex(r"P(X=k) = {n \choose k}p^k(1-p)^{n-k}")
+        st.metric(f"P(X = {k})", probability_sentence(probability))
+        chart_k = np.arange(0, n + 1)
+        st.plotly_chart(px.bar(x=chart_k, y=binom.pmf(chart_k, n, p_exceed), labels={"x": "Successes", "y": "Probability"}, title="Binomial probabilities"), width="stretch")
+
+    with tabs[4]:
+        st.markdown("### Poisson distribution")
+        daily_data = data[["datetime", pollutant]].copy()
+        daily_data[pollutant] = pd.to_numeric(daily_data[pollutant], errors="coerce")
+        daily_data = daily_data.dropna(subset=[pollutant])
+        daily = (
+            daily_data.assign(
+                day=daily_data["datetime"].dt.date,
+                exceeded=daily_data[pollutant] > threshold,
+            )
+            .groupby("day")["exceeded"]
+            .sum()
+        )
+        if daily.empty:
+            st.warning("Insufficient valid dated data for daily exceedance counts.")
+        else:
+            lam = float(daily.mean())
+            poisson_k = st.number_input("Exceedances in one day (k)", min_value=0, max_value=100, value=1, key="poisson_k")
+            probability = float(poisson.pmf(poisson_k, lam))
+            st.write(f"Estimated λ (average daily exceedances) = **{lam:.4g}**")
+            st.latex(r"P(X=k) = e^{-\lambda}\frac{\lambda^k}{k!}")
+            st.metric(f"P(X = {poisson_k})", probability_sentence(probability))
+            chart_k = np.arange(0, max(10, int(daily.max()) + 5))
+            st.plotly_chart(px.bar(x=chart_k, y=poisson.pmf(chart_k, lam), labels={"x": "Daily exceedances", "y": "Probability"}, title="Poisson probabilities"), width="stretch")
+
+    with tabs[5]:
+        st.markdown("### Normal distribution")
+        mean, standard_deviation = float(values.mean()), float(values.std())
+        if standard_deviation == 0 or pd.isna(standard_deviation):
+            st.warning("Insufficient variation to fit a normal curve.")
+        else:
+            histogram = px.histogram(values, nbins=20, histnorm="probability density", title="Histogram with fitted normal curve")
+            x = np.linspace(values.min(), values.max(), 200)
+            histogram.add_scatter(x=x, y=norm.pdf(x, mean, standard_deviation), mode="lines", name="Fitted normal curve")
+            st.plotly_chart(histogram, width="stretch")
+            st.write(f"Mean = **{mean:.4g}**, standard deviation = **{standard_deviation:.4g}**. The curve is a simple model of the sample distribution, not a guarantee that the data is perfectly normal.")
+
+    with tabs[6]:
+        st.markdown("### Z-score")
+        entered = st.number_input("Enter a pollutant value", value=float(values.mean()), key="z_value")
+        mean, standard_deviation = float(values.mean()), float(values.std())
+        if standard_deviation == 0:
+            st.warning("A Z-score cannot be calculated when all valid values are identical.")
+        else:
+            z = (entered - mean) / standard_deviation
+            st.metric("Z-score", f"{z:.4f}")
+            interpretation = "near the mean" if abs(z) < 1 else "above the mean" if z > 0 else "below the mean"
+            st.write(f"Formula: z = (value − mean) / standard deviation = ({entered:.4g} − {mean:.4g}) / {standard_deviation:.4g}. This value is **{interpretation}**.")
+
+    with tabs[7]:
+        st.markdown("### Normal approximation to binomial")
+        n_approx = st.number_input("Trials (n)", min_value=1, max_value=1000, value=30, key="approx_n")
+        p_approx = st.slider("Success probability (p)", 0.0, 1.0, min(max(p_exceed, 0.01), 0.99), key="approx_p")
+        k_approx = st.number_input("Successes (k)", min_value=0, max_value=1000, value=10, key="approx_k")
+        exact = float(binom.pmf(k_approx, n_approx, p_approx)) if k_approx <= n_approx else 0.0
+        mu, sigma = n_approx * p_approx, np.sqrt(n_approx * p_approx * (1 - p_approx))
+        approx = float(norm.cdf(k_approx + 0.5, mu, sigma) - norm.cdf(k_approx - 0.5, mu, sigma)) if sigma else (1.0 if k_approx == mu else 0.0)
+        left, right = st.columns(2)
+        left.metric("Exact binomial P(X = k)", probability_sentence(exact))
+        right.metric("Normal approximation", probability_sentence(approx))
+        st.latex(r"P(X=k) \approx P(k-0.5 < Y < k+0.5)")
+        st.info("The approximation is generally appropriate when np and n(1-p) are both at least 5. Continuity correction of 0.5 is used.")
+
+    with tabs[8]:
+        st.markdown("### Probability insights")
+        st.write(f"- Estimated probability of exceeding the threshold: **{probability_sentence(p_exceed)}**.")
+        insight_daily = (
+            data[["datetime", pollutant]]
+            .assign(value=lambda frame: pd.to_numeric(frame[pollutant], errors="coerce"))
+            .dropna(subset=["value"])
+            .assign(
+                day=lambda frame: frame["datetime"].dt.date,
+                exceeded=lambda frame: frame["value"] > threshold,
+            )
+            .groupby("day")["exceeded"]
+            .sum()
+        )
+        average_daily = float(insight_daily.mean()) if not insight_daily.empty else 0.0
+        st.write(f"- Average daily exceedances in the selected period: **{average_daily:.2f}**.")
+        st.write("- A Z-score with absolute value at least 2 is a simple indicator of an unusually distant observation; it is not a formal hypothesis test.")
+
+
 def main() -> None:
     load_dotenv()
     st.set_page_config(page_title="AirStat", page_icon="🌍", layout="wide")
@@ -687,6 +879,13 @@ def main() -> None:
             variables,
             format_func=display_name,
         )
+        pollutant_values = valid_series(data, pollutant)
+        default_threshold = float(pollutant_values.median()) if not pollutant_values.empty else 0.0
+        threshold = st.number_input(
+            f"Exceedance threshold ({units.get(pollutant, '')})",
+            value=default_threshold,
+            key=f"threshold_{city_choice}_{pollutant}",
+        )
         variable_x = st.selectbox(
             "Variable X", variables, index=variables.index(pollutant)
         )
@@ -704,6 +903,24 @@ def main() -> None:
     ].copy()
     values = filtered[pollutant].dropna()
 
+    with st.sidebar:
+        st.caption("Data quality for selected pollutant")
+        quality_values = pd.to_numeric(data[pollutant], errors="coerce")
+        st.write(f"Valid: **{int(quality_values.notna().sum())}**")
+        st.write(f"Missing/invalid: **{int(quality_values.isna().sum())}**")
+        st.write(f"Zero values: **{int((quality_values == 0).sum())}**")
+        dashboard_section = st.radio(
+            "Dashboard section",
+            ["Unit I — Descriptive Statistics", "Unit II — Probability"],
+        )
+
+    if dashboard_section.startswith("Unit II"):
+        render_unit_ii(data=filtered, pollutant=pollutant, threshold=threshold,
+                       unit=units.get(pollutant, ""),
+                       variable_y=variable_y)
+        return
+
+    st.header("Unit I — Descriptive Statistics")
     st.header("1. Dataset Overview")
     overview = st.columns(6)
     overview[0].metric("City", city)

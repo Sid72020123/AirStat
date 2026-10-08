@@ -4,37 +4,43 @@ AirStat is a beginner-friendly Streamlit dashboard for statistical analysis of
 hourly air-quality measurements from OpenAQ monitoring stations across major
 Indian cities. **Pune** is selected by default.
 
-The project is intentionally limited to the mid-semester Unit I syllabus:
+The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
 
 - data collection, cleaning, missing-value awareness, sorting, and duplicate handling
 - mean, median, mode, variance, standard deviation, minimum, maximum, range, quartiles, and IQR
 - covariance, Pearson correlation, and Spearman correlation
 - a time-series chart, histogram, box plot, and scatter plot
+- basic and conditional probability, including Bayes' theorem
+- continuous random variables and data-quality summaries
+- binomial, Poisson, and normal distributions
+- Z-scores and normal approximation to the binomial distribution
+- plain-language probability insights for the selected pollutant
 
-AQI and machine-learning models are deliberately not included.
+AQI, hypothesis testing, confidence intervals, forecasting, and machine-learning
+models are deliberately not included.
 
 ## Setup
 
 1. Create and activate a Python virtual environment.
 2. Install the dependencies:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Create a `.env` file in this folder:
+3. Create a `.env` file in this folder **(optional, not required)**:
 
-   ```text
-   OPENAQ_API_KEY=your_64_character_openaq_key
-   ```
+    ```text
+    OPENAQ_API_KEY=your_64_character_openaq_key
+    ```
 
-   The key is read from the environment and is never stored in the Python code.
+    The key is read from the environment and is never stored in the Python code.
 
 4. Start the dashboard:
 
-   ```bash
-   streamlit run app.py
-   ```
+    ```bash
+    streamlit run app.py
+    ```
 
 ## Using the dashboard
 
@@ -49,6 +55,20 @@ current Pune IITM or MPCB station, depending on recent data quality.
 After choosing a city, choose a date range and variable. The dashboard filters
 the cleaned Pandas DataFrame, displays descriptive statistics, and updates the
 charts and relationship analysis.
+
+Use the **Dashboard section** control in the sidebar to switch between **Unit I
+— Descriptive Statistics** and **Unit II — Probability**. Unit II uses the same
+cleaned, cached data and selected pollutant as Unit I, so it does not make extra
+API requests. Its tabs provide threshold probabilities, Bayes calculations,
+random-variable summaries, binomial and Poisson models, a fitted normal curve,
+Z-scores, normal approximation with continuity correction, and short air-quality
+interpretations.
+
+Unit II preserves numeric zero values and reports them separately from missing or
+invalid observations. Statistical calculations use only finite numeric values.
+When the selected pollutant has fewer than two valid observations, the dashboard
+shows **Insufficient valid data for this analysis** instead of producing
+misleading results.
 
 Station rankings are saved as JSON inside `data_cache/` for three months, so the
 city and station dropdowns open quickly on later visits without repeating the
