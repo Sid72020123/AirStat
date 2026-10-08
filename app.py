@@ -20,7 +20,9 @@ from scipy.stats import binom, norm, poisson
 DATA_CACHE_DIR = Path(__file__).parent / "data_cache"
 DATA_CACHE_TTL = timedelta(hours=1)
 STATION_CACHE_TTL = timedelta(days=90)
-LOOKBACK_DAYS = 30
+LIVE_STATION_MAX_AGE = timedelta(days=14)
+LOOKBACK_DAYS = 90
+LOOKBACK_OPTIONS = (30, 90, 180, 365)
 CITY_COORDINATES = {
     "Pune": (18.5204, 73.8567),
     "Mumbai": (19.0760, 72.8777),
@@ -261,7 +263,7 @@ def load_offline_default_data() -> tuple[
         station["id"]: station for station in (read_station_cache(DEFAULT_CITY) or [])
     }
     candidates: list[
-        tuple[tuple[float, int, float], pd.DataFrame, StationInfo, Path]
+        tuple[tuple[float, float, int], pd.DataFrame, StationInfo, Path]
     ] = []
     for path in sorted(DATA_CACHE_DIR.glob("pune_*.csv")):
         try:
@@ -283,7 +285,9 @@ def load_offline_default_data() -> tuple[
             null_rate = float(numeric.isna().mean().mean())
             valid_values = int(numeric.notna().sum().sum())
             latest_timestamp = data["datetime"].max().timestamp()
-            score = (null_rate, -valid_values, -latest_timestamp)
+            # Offline mode must prefer current observations over a more
+            # complete but obsolete station cache.
+            score = (-latest_timestamp, null_rate, -valid_values)
             candidates.append((score, data, station, path))
         except (OSError, ValueError, KeyError, pd.errors.ParserError):
             continue
@@ -323,7 +327,17 @@ def find_stations(
     """Find and rank nearby stations by recent null rate, then recency."""
     if not force_refresh:
         cached_stations = read_station_cache(city)
-        if cached_stations is not None:
+        newest_cached = max(
+            (
+                station["last_seen"]
+                for station in (cached_stations or [])
+            ),
+            default=datetime.min.replace(tzinfo=timezone.utc),
+        )
+        if (
+            cached_stations is not None
+            and datetime.now(timezone.utc) - newest_cached <= LIVE_STATION_MAX_AGE
+        ):
             return cached_stations
 
     latitude, longitude = CITY_COORDINATES[city]
@@ -347,9 +361,11 @@ def find_stations(
         raise RuntimeError(f"Could not search stations near {city}: {error}") from error
 
     candidates: list[StationInfo] = []
+    cutoff = datetime.now(timezone.utc) - LIVE_STATION_MAX_AGE
     for location in locations:
         sensors = sensor_parameters(location)
-        if sensors:
+        last_seen = station_last_seen(location)
+        if sensors and last_seen >= cutoff:
             candidates.append(
                 {
                     "id": location.id,
@@ -357,7 +373,7 @@ def find_stations(
                     "city": city,
                     "sensors": sensors,
                     "sensor_count": len(sensors),
-                    "last_seen": station_last_seen(location),
+                    "last_seen": last_seen,
                     "null_rate": 1.0,
                     "observed_rows": 0,
                 }
@@ -365,7 +381,8 @@ def find_stations(
 
     if not candidates:
         raise RuntimeError(
-            f"No OpenAQ station with supported sensors was found near {city}."
+            f"No active OpenAQ station near {city} has reported within the "
+            f"last {LIVE_STATION_MAX_AGE.days} days."
         )
 
     try:
@@ -585,6 +602,30 @@ def valid_series(data: pd.DataFrame, column: str) -> pd.Series:
     return values[np.isfinite(values)]
 
 
+def suspicious_zero_flags(data: pd.DataFrame, column: str) -> pd.Series:
+    """Flag zero readings that match common sensor/reporting error patterns."""
+    numeric = data.apply(
+        lambda values: pd.to_numeric(values, errors="coerce")
+    )
+    values = numeric[column]
+    zero = values.eq(0)
+    previous_nonzero = values.shift(1).gt(0)
+    next_nonzero = values.shift(-1).gt(0)
+    isolated = zero & previous_nonzero & next_nonzero
+
+    run_id = zero.ne(zero.shift(fill_value=False)).cumsum()
+    run_lengths = zero.groupby(run_id).transform("sum")
+    long_run = zero & run_lengths.ge(3)
+
+    numeric_pollutants = [name for name in numeric.columns if name != "datetime"]
+    simultaneous = (
+        numeric[numeric_pollutants].eq(0).sum(axis=1).ge(2)
+        if len(numeric_pollutants) >= 2
+        else pd.Series(False, index=data.index)
+    )
+    return (isolated | long_run | (zero & simultaneous)).fillna(False)
+
+
 def probability_sentence(probability: float) -> str:
     """Explain a probability in simple percentage language."""
     return f"{probability:.1%} ({probability:.4f})"
@@ -789,6 +830,17 @@ def main() -> None:
             index=list(CITY_COORDINATES).index(DEFAULT_CITY),
             help="Pune is selected by default. You can change this anytime.",
         )
+        lookback_days = st.selectbox(
+            "Live data lookback",
+            LOOKBACK_OPTIONS,
+            index=LOOKBACK_OPTIONS.index(LOOKBACK_DAYS),
+            format_func=lambda days: f"{days} days",
+            help=(
+                "When an API key is available, request this much recent data "
+                "from the selected station. Older history may not exist for "
+                "every sensor."
+            ),
+        )
         if st.button("Refresh Data"):
             fetch_data.clear()
             find_stations.clear()
@@ -798,6 +850,7 @@ def main() -> None:
 
     fallback_used = False
     fallback_reason = ""
+    fallback_path: Path | None = None
     force_refresh = st.session_state.pop("refresh_city", None) == city_choice
     try:
         if not api_key:
@@ -816,7 +869,10 @@ def main() -> None:
             selected_station_label = labels[0]
         selected_station = station_options[labels.index(selected_station_label)]
         data, units, city, station = fetch_data(
-            api_key, selected_station, force_refresh=force_refresh
+            api_key,
+            selected_station,
+            force_refresh=force_refresh,
+            days_back=lookback_days,
         )
     except (RuntimeError, OpenAQError):
         (
@@ -825,7 +881,7 @@ def main() -> None:
             city,
             station,
             selected_station,
-            _,
+            fallback_path,
         ) = load_offline_default_data()
         station_options = [selected_station]
         labels = [station_label(selected_station)]
@@ -842,6 +898,15 @@ def main() -> None:
             st.warning(
                 f"{fallback_reason} Showing the original downloaded Pune data "
                 "instead."
+            )
+            if fallback_path is not None:
+                st.caption(
+                    f"Offline source: `{fallback_path.name}` | "
+                    f"latest observation: {data['datetime'].max().date()}"
+                )
+        else:
+            st.success(
+                f"Live OpenAQ data loaded through {data['datetime'].max().date()}."
             )
         st.write(f"**City:** {city}")
         station_choice = st.selectbox(
@@ -892,6 +957,14 @@ def main() -> None:
         variable_y = st.selectbox(
             "Variable Y", variables, index=1 if len(variables) > 1 else 0
         )
+        include_suspicious_zeros = st.checkbox(
+            "Include suspicious zeros in calculations",
+            value=True,
+            help=(
+                "Zeros are retained by default. Uncheck this to exclude zeros "
+                "flagged by the quality heuristic from statistical calculations."
+            ),
+        )
 
     if isinstance(selected_dates, tuple) and len(selected_dates) == 2:
         start_date, end_date = selected_dates
@@ -901,21 +974,36 @@ def main() -> None:
         (data["datetime"].dt.date >= start_date)
         & (data["datetime"].dt.date <= end_date)
     ].copy()
-    values = filtered[pollutant].dropna()
+    filtered[pollutant] = pd.to_numeric(filtered[pollutant], errors="coerce")
+    filtered["suspicious_zero"] = suspicious_zero_flags(data, pollutant).loc[
+        filtered.index
+    ]
+    analysis_data = filtered.copy()
+    if not include_suspicious_zeros:
+        analysis_data.loc[analysis_data["suspicious_zero"], pollutant] = np.nan
+    values = valid_series(analysis_data, pollutant)
 
     with st.sidebar:
         st.caption("Data quality for selected pollutant")
-        quality_values = pd.to_numeric(data[pollutant], errors="coerce")
-        st.write(f"Valid: **{int(quality_values.notna().sum())}**")
-        st.write(f"Missing/invalid: **{int(quality_values.isna().sum())}**")
-        st.write(f"Zero values: **{int((quality_values == 0).sum())}**")
+        quality_values = pd.to_numeric(filtered[pollutant], errors="coerce")
+        finite = quality_values.notna() & np.isfinite(quality_values)
+        zero_count = int((quality_values == 0).sum())
+        suspicious_count = int(filtered["suspicious_zero"].sum())
+        st.write(f"Valid numeric: **{int(finite.sum())}**")
+        st.write(f"Missing/invalid: **{int((~finite).sum())}**")
+        st.write(f"Zero values: **{zero_count}**")
+        st.write(f"Suspicious zeros: **{suspicious_count}**")
+        if suspicious_count:
+            st.caption(
+                "Suspicious zeros are heuristic flags, not proof of sensor failure."
+            )
         dashboard_section = st.radio(
             "Dashboard section",
             ["Unit I — Descriptive Statistics", "Unit II — Probability"],
         )
 
     if dashboard_section.startswith("Unit II"):
-        render_unit_ii(data=filtered, pollutant=pollutant, threshold=threshold,
+        render_unit_ii(data=analysis_data, pollutant=pollutant, threshold=threshold,
                        unit=units.get(pollutant, ""),
                        variable_y=variable_y)
         return
@@ -933,19 +1021,19 @@ def main() -> None:
         f"Selected period: **{start_date} to {end_date}** | "
         f"Available data: **{first_date} to {last_date}**"
     )
-    st.dataframe(filtered.head(10), width="stretch")
+    st.dataframe(analysis_data.drop(columns=["suspicious_zero"]).head(10), width="stretch")
 
     st.header("2. Descriptive Statistics")
     if values.empty:
         st.warning("No values are available for this variable and date range.")
     else:
-        st.dataframe(descriptive_statistics(filtered[pollutant]), hide_index=True)
+        st.dataframe(descriptive_statistics(analysis_data[pollutant]), hide_index=True)
 
     st.header("3. Exploratory Visualizations")
     if values.empty:
         st.info("Choose a date range containing measurements to display charts.")
     else:
-        line_data = filtered[["datetime", pollutant]].dropna()
+        line_data = analysis_data[["datetime", pollutant]].dropna()
         st.plotly_chart(
             px.line(
                 line_data,
@@ -969,7 +1057,7 @@ def main() -> None:
             )
 
     st.header("4. Covariance and Correlation")
-    paired = filtered[[variable_x, variable_y]].dropna()
+    paired = analysis_data[[variable_x, variable_y]].dropna()
     if variable_x == variable_y:
         st.warning("Choose two different variables for relationship analysis.")
     elif len(paired) < 2:
@@ -1000,7 +1088,13 @@ def main() -> None:
     st.header("5. Data Quality")
     quality = {
         "Total rows downloaded": data.attrs.get("rows_before_cleaning", len(data)),
-        "Missing values in selected variable": int(data[pollutant].isna().sum()),
+        "Missing values in selected variable": int(analysis_data[pollutant].isna().sum()),
+        "Suspicious zero values": int(filtered["suspicious_zero"].sum()),
+        "Suspicious zeros excluded": (
+            int(filtered["suspicious_zero"].sum())
+            if not include_suspicious_zeros
+            else 0
+        ),
         "Duplicate timestamps removed": data.attrs.get("duplicate_timestamps", 0),
         "Rows remaining after cleaning": len(data),
     }

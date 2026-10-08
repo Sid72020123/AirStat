@@ -52,9 +52,13 @@ choose another station from the **Monitoring station** dropdown if you want to
 compare locations. No station ID is required. Pune's result is commonly a
 current Pune IITM or MPCB station, depending on recent data quality.
 
-After choosing a city, choose a date range and variable. The dashboard filters
-the cleaned Pandas DataFrame, displays descriptive statistics, and updates the
-charts and relationship analysis.
+After choosing a city, choose the **Live data lookback** and then a date range
+and variable. With a valid OpenAQ API key, AirStat can request the latest 30,
+90, 180, or 365 days for the selected station; 90 days is selected by default.
+The date picker then filters the downloaded data. The dashboard displays
+descriptive statistics and updates the charts and relationship analysis. The
+available history still depends on how long the selected station and sensor
+have been reporting.
 
 Use the **Dashboard section** control in the sidebar to switch between **Unit I
 — Descriptive Statistics** and **Unit II — Probability**. Unit II uses the same
@@ -69,6 +73,14 @@ invalid observations. Statistical calculations use only finite numeric values.
 When the selected pollutant has fewer than two valid observations, the dashboard
 shows **Insufficient valid data for this analysis** instead of producing
 misleading results.
+
+AirStat also marks potentially suspicious zeros using transparent heuristics:
+isolated zeros surrounded by positive readings, runs of at least three
+consecutive zeros, and timestamps where at least two variables are zero
+simultaneously. These flags do not prove a sensor error. The original zero
+values remain in the data, and the sidebar shows both the total zero count and
+the suspicious-zero count. Use **Include suspicious zeros in calculations** to
+keep them (the default) or exclude flagged zeros from the selected analysis.
 
 Station rankings are saved as JSON inside `data_cache/` for three months, so the
 city and station dropdowns open quickly on later visits without repeating the
@@ -89,10 +101,26 @@ It chooses the cached station with the lowest missing-data rate, then the most
 valid values and latest data. This offline fallback keeps the dashboard usable
 without showing an API traceback.
 
-## Limitations
+## Live data and limitations
 
-The dashboard uses one automatically selected station at a time and a recent
-30-day window. Some cities may not have a station with recent data or all
-supported variables. Correlation describes association only; it does not
-establish causation. The dashboard does not calculate AQI, forecast pollution,
-or train prediction models.
+Live data requires a valid `OPENAQ_API_KEY`. The measurements cache is reused
+for up to one hour, so choose **Refresh Data** when you need a new API request.
+If the key is missing/invalid, OpenAQ is rate-limiting requests, or the station
+has no data for the requested lookback, the app safely falls back to the
+original valid Pune CSV in `data_cache/`. The fallback may cover a shorter
+period than the selected live lookback because it cannot invent historical
+observations. Offline fallback now prefers the cached file with the newest
+last observation, then compares missing-data rate and valid-value count. This
+prevents an older, more complete station file from hiding newer observations.
+The sidebar displays the exact offline filename and latest observation date, or
+confirms the latest date when live OpenAQ data is loaded. Restart Streamlit
+after code changes so the browser is connected to the updated application.
+For live station selection, AirStat refreshes station metadata when its newest
+cached station is older than 14 days and only lists stations that reported
+within the last 14 days. Archived stations such as MIT-Kothrud station 60660,
+whose OpenAQ record ended in July 2022, are therefore not treated as live.
+
+The dashboard uses one automatically selected station at a time. Some cities
+may not have a station with recent data or all supported variables. Correlation
+describes association only; it does not establish causation. The dashboard does
+not calculate AQI, forecast pollution, or train prediction models.
