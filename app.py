@@ -53,9 +53,8 @@ DISPLAY_NAMES = {
     "temperature": "Temperature",
     "relativehumidity": "Relative Humidity",
     "windspeed": "Wind Speed",
+    "relative_humidity": "Relative Humidity",
 }
-
-
 class StationInfo(TypedDict):
     """Metadata needed to select and download one station."""
 
@@ -229,6 +228,68 @@ def load_measurement_cache(
         )
     except (KeyError, OSError, ValueError, pd.errors.ParserError):
         return None
+
+
+def offline_station_for_data(
+    data: pd.DataFrame, station_id: int, name: str
+) -> StationInfo:
+    """Build station metadata for a locally cached measurement file."""
+    sensors = {
+        column: (index + 1, "")
+        for index, column in enumerate(data.columns)
+        if column != "datetime"
+    }
+    return {
+        "id": station_id,
+        "name": f"{name} (offline cached data)",
+        "city": DEFAULT_CITY,
+        "sensors": sensors,
+        "sensor_count": len(sensors),
+        "last_seen": datetime.now(timezone.utc),
+        "null_rate": float(data.drop(columns=["datetime"]).isna().mean().mean()),
+        "observed_rows": len(data),
+    }
+
+
+def load_offline_default_data() -> tuple[
+    pd.DataFrame, dict[str, str], str, str, StationInfo, Path
+]:
+    """Select the best valid Pune measurement CSV from data_cache."""
+    station_metadata = {
+        station["id"]: station for station in (read_station_cache(DEFAULT_CITY) or [])
+    }
+    candidates: list[
+        tuple[tuple[float, int, float], pd.DataFrame, StationInfo, Path]
+    ] = []
+    for path in sorted(DATA_CACHE_DIR.glob("pune_*.csv")):
+        try:
+            data = clean_data(pd.read_csv(path, parse_dates=["datetime"]))
+            numeric = data.drop(columns=["datetime"], errors="ignore").apply(
+                pd.to_numeric, errors="coerce"
+            )
+            if data.empty or numeric.empty or not numeric.notna().any().any():
+                continue
+            data = data.rename(columns={"relative_humidity": "relativehumidity"})
+            match = re.match(r"pune_(\d+)_", path.name)
+            station_id = int(match.group(1)) if match else 0
+            metadata = station_metadata.get(station_id)
+            station = offline_station_for_data(
+                data,
+                station_id,
+                metadata["name"] if metadata else f"Pune station {station_id}",
+            )
+            null_rate = float(numeric.isna().mean().mean())
+            valid_values = int(numeric.notna().sum().sum())
+            latest_timestamp = data["datetime"].max().timestamp()
+            score = (null_rate, -valid_values, -latest_timestamp)
+            candidates.append((score, data, station, path))
+        except (OSError, ValueError, KeyError, pd.errors.ParserError):
+            continue
+    if not candidates:
+        raise RuntimeError("No valid Pune CSV data was found in data_cache.")
+    _, data, station, path = min(candidates, key=lambda item: item[0])
+    units = {column: "" for column in data.columns if column != "datetime"}
+    return data, units, DEFAULT_CITY, station["name"], station, path
 
 
 def station_sample(
@@ -522,10 +583,7 @@ def main() -> None:
     st.title("AirStat")
     st.caption("Explore air quality across India's major cities")
 
-    api_key = os.getenv("OPENAQ_API_KEY")
-    if api_key is None:
-        st.error("OPENAQ_API_KEY is missing. Add it to a .env file and restart the app.")
-        st.stop()
+    api_key = os.getenv("OPENAQ_API_KEY", "").strip()
 
     with st.sidebar:
         st.header("Data Selection")
@@ -547,11 +605,15 @@ def main() -> None:
             st.rerun()
 
     fallback_used = False
+    fallback_reason = ""
+    force_refresh = st.session_state.pop("refresh_city", None) == city_choice
     try:
+        if not api_key:
+            raise RuntimeError("No OpenAQ API key was provided.")
         station_options = find_stations(
             api_key,
             city_choice,
-            force_refresh=st.session_state.get("refresh_city") == city_choice,
+            force_refresh=force_refresh,
         )
         selected_station = station_options[0]
         selected_station_label = st.session_state.get(
@@ -561,35 +623,33 @@ def main() -> None:
         if selected_station_label not in labels:
             selected_station_label = labels[0]
         selected_station = station_options[labels.index(selected_station_label)]
-        force_refresh = st.session_state.pop("refresh_city", None) == city_choice
         data, units, city, station = fetch_data(
             api_key, selected_station, force_refresh=force_refresh
         )
-    except RuntimeError as error:
-        fallback_options = read_station_cache(DEFAULT_CITY)
-        if fallback_options is None:
-            st.error(str(error))
-            st.stop()
-        fallback_station = fallback_options[0]
-        fallback_path = DATA_CACHE_DIR / (
-            f"{safe_city_filename(DEFAULT_CITY)}_{fallback_station['id']}_{LOOKBACK_DAYS}d.csv"
-        )
-        fallback_data = load_measurement_cache(fallback_path, fallback_station)
-        if fallback_data is None:
-            st.error(str(error))
-            st.stop()
-        station_options = fallback_options
-        selected_station = fallback_station
-        labels = [station_label(option) for option in station_options]
+    except (RuntimeError, OpenAQError):
+        (
+            data,
+            units,
+            city,
+            station,
+            selected_station,
+            _,
+        ) = load_offline_default_data()
+        station_options = [selected_station]
+        labels = [station_label(selected_station)]
         selected_station_label = labels[0]
-        data, units, city, station = fallback_data
         fallback_used = True
+        fallback_reason = (
+            "No API key was provided."
+            if not api_key
+            else "OpenAQ could not be reached or rejected the API key."
+        )
 
     with st.sidebar:
         if fallback_used:
             st.warning(
-                "OpenAQ is temporarily rate-limited. Showing the latest downloaded "
-                "Pune data instead."
+                f"{fallback_reason} Showing the original downloaded Pune data "
+                "instead."
             )
         st.write(f"**City:** {city}")
         station_choice = st.selectbox(

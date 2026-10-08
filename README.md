@@ -62,7 +62,12 @@ instead of exposing a traceback.
 
 OpenAQ may not provide every pollutant or environmental variable at all times.
 The dashboard uses the sensors actually available at the selected station and
-shows a clear error when no measurements are returned.
+shows a clear message when no measurements are returned. If the API key is
+missing, invalid, expired, or OpenAQ is temporarily unavailable, the dashboard
+automatically selects the best valid, non-empty Pune CSV from `data_cache/`.
+It chooses the cached station with the lowest missing-data rate, then the most
+valid values and latest data. This offline fallback keeps the dashboard usable
+without showing an API traceback.
 
 ## Limitations
 
