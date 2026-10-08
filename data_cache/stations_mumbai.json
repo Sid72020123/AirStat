@@ -1,0 +1,1778 @@
+[
+  {
+    "id": 11612,
+    "name": "Sector-19A Nerul, Navi Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 39464,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 39462,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 39465,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39461,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 39460,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 39463,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-16T16:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 108
+  },
+  {
+    "id": 60661,
+    "name": "Siddharth Nagar-Worli, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 389760,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 389767,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 389777,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 389771,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 389761,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2022-10-16T16:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 108
+  },
+  {
+    "id": 5593,
+    "name": "Pimpleshwar Mandir, Thane - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 14830,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 14802,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15198,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14801,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14806,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 14804,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-16T11:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 99
+  },
+  {
+    "id": 2598,
+    "name": "Navi Mumbai Municipal Corporation Airoli",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 5400,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 5408,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 5404,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 13523,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 4,
+    "last_seen": "2020-04-09T00:15:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 92
+  },
+  {
+    "id": 11604,
+    "name": "Deonar, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 39420,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 39418,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 39421,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39417,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 39416,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 39419,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-16T15:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 78
+  },
+  {
+    "id": 6987,
+    "name": "Vile Parle West, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 20236,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 20239,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12235849,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20243,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235851,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235852,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 20254,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235854,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-05-30T09:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 69
+  },
+  {
+    "id": 11602,
+    "name": "Bandra Kurla Complex, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 39408,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 39406,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 39409,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39405,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 39404,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 39407,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-16T15:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 69
+  },
+  {
+    "id": 8039,
+    "name": "Mumbai",
+    "city": "Mumbai",
+    "sensors": {
+      "pm25": {
+        "id": 23320,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 1,
+    "last_seen": "2026-10-08T06:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 69
+  },
+  {
+    "id": 6943,
+    "name": "Mahape, Navi Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12235900,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 20069,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 19961,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235904,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235905,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235906,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235907,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235908,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6945,
+    "name": "Kurla, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 19993,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 20076,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12235832,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235833,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235834,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235835,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 19987,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235836,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6948,
+    "name": "Chhatrapati Shivaji Intl. Airport (T2), Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12235855,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 19977,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 19979,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 19980,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235860,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235861,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235862,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235863,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6959,
+    "name": "Siddharth Nagar-Worli, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12236430,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 20030,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 20031,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236434,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236435,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236436,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 20034,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236437,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 12024,
+    "name": "Chakala-Andheri East, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12236406,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12236408,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 40570,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 40572,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12442196,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236410,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 40573,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236412,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 7850,
+    "name": "Bandra, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 36455,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 36453,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 36451,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 22798,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 36447,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 36446,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2021-12-24T04:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 33
+  },
+  {
+    "id": 12040,
+    "name": "Mulund West, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 40609,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 40612,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12236479,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236480,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 40641,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236482,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 40640,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236484,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 25
+  },
+  {
+    "id": 6956,
+    "name": "Powai, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 20125,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235893,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20054,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235895,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 20079,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235897,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 20101,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235899,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 10
+  },
+  {
+    "id": 3409512,
+    "name": "Kandivali West, Mumbai - BMC",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238580,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238582,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238583,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238584,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238585,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238586,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238587,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238588,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.001984126984126984,
+    "observed_rows": 63
+  },
+  {
+    "id": 3409478,
+    "name": "Bhayandar West, Mira-Bhayandar - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238334,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238336,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238337,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238338,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238339,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238340,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238341,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238342,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0057692307692307696,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409469,
+    "name": "Kasarvadavali, Thane - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238253,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238255,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238256,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238257,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238258,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238259,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238260,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238261,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.005859375,
+    "observed_rows": 64
+  },
+  {
+    "id": 3409323,
+    "name": "Worli, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12235909,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235911,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235912,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235913,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235914,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235915,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235916,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235917,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.007692307692307693,
+    "observed_rows": 65
+  },
+  {
+    "id": 6965,
+    "name": "Borivali East, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 20075,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12252655,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12252656,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20085,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12252658,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12252659,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 20090,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12252661,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T12:00:00+00:00",
+    "null_rate": 0.01020408163265306,
+    "observed_rows": 49
+  },
+  {
+    "id": 3409329,
+    "name": "Deonar, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12236380,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12236382,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236383,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236384,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236385,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236386,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236387,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236388,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.011494252873563218,
+    "observed_rows": 58
+  },
+  {
+    "id": 11611,
+    "name": "Malad West, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 39458,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12236423,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236424,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39455,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236426,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236427,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236428,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236429,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.011538461538461539,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409486,
+    "name": "Kherwadi_Bandra East, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238406,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238408,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238409,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238410,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238411,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238412,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238413,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238414,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.011538461538461539,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409510,
+    "name": "Byculla, Mumbai - BMC",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238562,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238564,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238565,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238566,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238567,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238568,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238569,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238570,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.011538461538461539,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409482,
+    "name": "Bandra Kurla Complex, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238370,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238372,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238373,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238374,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238375,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238376,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238377,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238378,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.014344262295081966,
+    "observed_rows": 61
+  },
+  {
+    "id": 3409483,
+    "name": "Chembur, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238379,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238381,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238382,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238383,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238384,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238385,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238386,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238387,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.01639344262295082,
+    "observed_rows": 61
+  },
+  {
+    "id": 3409479,
+    "name": "Mindspace-Malad West, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238343,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238345,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238346,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238347,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238348,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238349,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238350,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238351,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T13:30:00+00:00",
+    "null_rate": 0.022540983606557378,
+    "observed_rows": 61
+  },
+  {
+    "id": 3409476,
+    "name": "CBD Belapur, Belapur - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238316,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238318,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238319,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238320,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238321,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238322,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238323,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238324,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:15:00+00:00",
+    "null_rate": 0.0234375,
+    "observed_rows": 64
+  },
+  {
+    "id": 3409471,
+    "name": "Sector-2E Kalamboli, Navi Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238271,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238273,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238274,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238275,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238276,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238277,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238278,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238279,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03461538461538462,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409514,
+    "name": "Ghatkopar, Mumbai - BMC",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238598,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238600,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238601,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238602,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238603,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238604,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238605,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238606,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03461538461538462,
+    "observed_rows": 65
+  },
+  {
+    "id": 6967,
+    "name": "Sion, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 20109,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12243927,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20098,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20097,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12243930,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12243931,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12243932,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12243933,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03508771929824561,
+    "observed_rows": 57
+  },
+  {
+    "id": 3409477,
+    "name": "Kopripada-Vashi, Navi Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238325,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238327,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238328,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238329,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238330,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238331,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238332,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238333,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.05961538461538462,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409472,
+    "name": "Upvan Fort, Thane - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238280,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238282,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238283,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238284,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238285,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238286,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238287,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238288,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.06538461538461539,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409513,
+    "name": "Sewri, Mumbai - BMC",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238589,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238591,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238592,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238593,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238594,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238595,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238596,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238597,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.06538461538461539,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409487,
+    "name": "Sanpada, Navi Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12243944,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12243946,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12243947,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12243948,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12243949,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12243950,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12243951,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12243952,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.07115384615384615,
+    "observed_rows": 65
+  },
+  {
+    "id": 12039,
+    "name": "Khindipada-Bhandup West, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 40636,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12236391,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 40634,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 40615,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236394,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236395,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236396,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236397,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.09846153846153846,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409511,
+    "name": "Shivaji Nagar, Mumbai - BMC",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12238571,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238573,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238574,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238575,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238576,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238577,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12238578,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12238579,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.10192307692307692,
+    "observed_rows": 65
+  },
+  {
+    "id": 3409328,
+    "name": "Bandra Kurla Complex, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12708241,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12708243,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12708244,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12708245,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12708246,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12708247,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12708248,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12708249,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T11:15:00+00:00",
+    "null_rate": 0.13580246913580246,
+    "observed_rows": 27
+  },
+  {
+    "id": 6927,
+    "name": "Colaba, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 20137,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235923,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20139,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20142,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235926,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235927,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235928,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235929,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T13:30:00+00:00",
+    "null_rate": 0.22023809523809526,
+    "observed_rows": 56
+  },
+  {
+    "id": 3409322,
+    "name": "Pimpleshwar Mandir, Thane - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12235639,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235641,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235642,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235643,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235644,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235645,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235646,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235647,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.23076923076923075,
+    "observed_rows": 65
+  },
+  {
+    "id": 11606,
+    "name": "Borivali East, Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 39431,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12236415,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236416,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39429,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236418,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236419,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 12236420,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 7,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.3387096774193548,
+    "observed_rows": 62
+  },
+  {
+    "id": 12044,
+    "name": "Kandivali East, Mumbai - MPCB",
+    "city": "Mumbai",
+    "sensors": {
+      "co": {
+        "id": 12236467,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 40624,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 40627,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 40652,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 40650,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236473,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236474,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236475,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-04-18T05:45:00+00:00",
+    "null_rate": 0.35,
+    "observed_rows": 60
+  },
+  {
+    "id": 3409330,
+    "name": "Sector-19A Nerul, Navi Mumbai - IITM",
+    "city": "Mumbai",
+    "sensors": {
+      "no2": {
+        "id": 14230326,
+        "unit": "ppb"
+      },
+      "pm10": {
+        "id": 14230327,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 14230328,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 14230329,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 4,
+    "last_seen": "2025-09-28T00:00:00+00:00",
+    "null_rate": 1.0,
+    "observed_rows": 0
+  }
+]
