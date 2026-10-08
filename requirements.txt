@@ -1,0 +1,6 @@
+numpy
+openaq==1.1.0
+pandas
+plotly
+python-dotenv
+streamlit

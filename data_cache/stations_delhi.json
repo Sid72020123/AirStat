@@ -1,0 +1,3498 @@
+[
+  {
+    "id": 2597,
+    "name": "US Diplomatic Post: New Delhi",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 5398,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 1,
+    "last_seen": "2016-11-09T16:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 118
+  },
+  {
+    "id": 5581,
+    "name": "Pusa, New Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15266,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 14800,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 14752,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14851,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14853,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2018-05-14T02:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 95
+  },
+  {
+    "id": 2503,
+    "name": "Shadipur, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 4851,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 4852,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 4853,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 13860,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 13859,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2018-02-22T02:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 92
+  },
+  {
+    "id": 103,
+    "name": "Income Tax Office, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 169,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 13863,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 168,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 13862,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 13861,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2018-02-22T03:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 91
+  },
+  {
+    "id": 13,
+    "name": "Delhi Technological University, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "no2": {
+        "id": 13866,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 24,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 13864,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2018-02-22T04:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 91
+  },
+  {
+    "id": 2587,
+    "name": "Sector16A, Faridabad - HSPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 5347,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 5341,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 5344,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 40563,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 13900,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 13901,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-02-22T03:25:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 88
+  },
+  {
+    "id": 3409496,
+    "name": "New Moti Bagh, Delhi - MHUA",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15646331,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15646333,
+        "unit": "ppb"
+      },
+      "pm25": {
+        "id": 15646335,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15646336,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 15646337,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-06-13T09:15:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 2860223,
+    "name": "GK1 (Oberoi Terrace)",
+    "city": "Delhi",
+    "sensors": {
+      "pm10": {
+        "id": 9320368,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 9320367,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 9320350,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 9320356,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 4,
+    "last_seen": "2026-10-08T13:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 4712609,
+    "name": "Air Check",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 15289075,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15289076,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 15289077,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2026-10-08T13:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 6105800,
+    "name": "Sector 1, Noida extension",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 14453757,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 14453758,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 14453759,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2026-10-08T13:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 6145551,
+    "name": "Anand Lok",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 14745878,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 14745879,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 14745880,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2026-10-08T13:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 6119272,
+    "name": "Sector - 5, Vasundhara, Ghaziabad, Uttar Pradesh ",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 14551755,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 14551756,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 14551757,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2026-03-26T05:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 8118,
+    "name": "New Delhi",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 23534,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 1,
+    "last_seen": "2026-09-24T10:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 71
+  },
+  {
+    "id": 5586,
+    "name": "Sirifort, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234764,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234766,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234767,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234768,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234769,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234770,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12234771,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12234772,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 5626,
+    "name": "DTU, New Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234755,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234757,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 14949,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14974,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234760,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234761,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 17766,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234763,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6358,
+    "name": "Mandir Marg, New Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234773,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 17773,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 17777,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234777,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 17770,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234779,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 17779,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234781,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6934,
+    "name": "Dr. Karni Singh Shooting Range, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235006,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 19930,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 19917,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235010,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235011,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235012,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 19943,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235014,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6986,
+    "name": "Knowledge Park - V, Greater Noida - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235930,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235932,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235933,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235934,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 20242,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235936,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235937,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235938,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 8365,
+    "name": "Nehru Nagar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 34799,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 24303,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 35017,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235082,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235083,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235084,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 35009,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235086,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 8475,
+    "name": "Sonia Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235105,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 35047,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 35048,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 35049,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 35050,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235111,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235112,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235113,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 10484,
+    "name": "Sri Aurobindo Marg, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 34761,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235309,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 34757,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 34781,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 34772,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235313,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 34759,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235315,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 11603,
+    "name": "Chandni Chowk, Delhi - IITM",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12236356,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 39412,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12236359,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39411,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 39410,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236362,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236363,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236364,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6254594,
+    "name": "Talkatora Garden, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15554202,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15554204,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15554206,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15554207,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15554208,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15554209,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15554210,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15554211,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6254663,
+    "name": "JNU, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15554698,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15554700,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15554702,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15554703,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15554704,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15554705,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15554706,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15554707,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 6254666,
+    "name": "IGNOU_Maidan Garhi, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15554734,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15554736,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15554738,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15554739,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15554740,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15554741,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15554742,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15554743,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 5570,
+    "name": "Aya Nagar, New Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15010,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12234705,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234706,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234707,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234708,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 5610,
+    "name": "North Campus, DU, Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234685,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 14902,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12234688,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14886,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234690,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 5627,
+    "name": "CRRI Mathura Road, New Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234673,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15082,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15063,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14946,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234678,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 5650,
+    "name": "IGI Airport (T3), Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234691,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234693,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234694,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234695,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234696,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 10921,
+    "name": "NISE Gwal Pahari, Gurugram - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235702,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235704,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235705,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235706,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235707,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 65
+  },
+  {
+    "id": 8239,
+    "name": "Okhla Phase-2, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235069,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 24008,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 24012,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 24011,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235074,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235075,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 24009,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235077,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 64
+  },
+  {
+    "id": 5541,
+    "name": "Burari Crossing, New Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234679,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 14936,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12234682,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14620,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14912,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 64
+  },
+  {
+    "id": 8235,
+    "name": "Jahangirpuri, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235024,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235026,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235027,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235028,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235029,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235030,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 23998,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235032,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-06T22:15:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 63
+  },
+  {
+    "id": 4663956,
+    "name": "Santushti Apartments, Vasant Kunj",
+    "city": "Delhi",
+    "sensors": {
+      "pm25": {
+        "id": 13273790,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 13273791,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 13273792,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2026-10-08T13:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 59
+  },
+  {
+    "id": 5665,
+    "name": "Vasundhara, Ghaziabad - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235155,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15236,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15237,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15238,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15239,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235161,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235162,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235163,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 58
+  },
+  {
+    "id": 5742,
+    "name": "Patparganj, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "no2": {
+        "id": 15498,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15500,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15628,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15629,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15499,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2018-05-13T11:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 17
+  },
+  {
+    "id": 7434,
+    "name": "East Arjun Nagar, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "no2": {
+        "id": 21624,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 21625,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 21623,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2020-02-10T03:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 5
+  },
+  {
+    "id": 5639,
+    "name": "R K Puram, New Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15008,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15030,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15042,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15059,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15071,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15092,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T04:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 4
+  },
+  {
+    "id": 5617,
+    "name": "Sector- 16A, Faridabad - HSPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 17865,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 14887,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15229,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 17547,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14930,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15107,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-31T02:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 3
+  },
+  {
+    "id": 10489,
+    "name": "ITO, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 34823,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 34821,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 34816,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 34793,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 35016,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 35015,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-31T01:45:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 2
+  },
+  {
+    "id": 5509,
+    "name": "Anand Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 14519,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 14523,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 14524,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14522,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14521,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 14520,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-31T00:30:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 1
+  },
+  {
+    "id": 8092,
+    "name": "East Arjun Nagar, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "no2": {
+        "id": 23669,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 23465,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 34750,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 3,
+    "last_seen": "2022-01-26T07:00:00+00:00",
+    "null_rate": 0.0,
+    "observed_rows": 1
+  },
+  {
+    "id": 6356,
+    "name": "Pusa, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235316,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235318,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235319,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235320,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235321,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235322,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235323,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235324,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0019230769230769232,
+    "observed_rows": 65
+  },
+  {
+    "id": 235,
+    "name": "Anand Vihar, New Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 385,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235607,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235608,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235609,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235610,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235611,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 383,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235613,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.002564102564102564,
+    "observed_rows": 65
+  },
+  {
+    "id": 8472,
+    "name": "Bawana, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235289,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 36394,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 36393,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235293,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 36391,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235295,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235296,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235297,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.003076923076923077,
+    "observed_rows": 65
+  },
+  {
+    "id": 11607,
+    "name": "Lodhi Road, Delhi - IITM",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 39437,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12236374,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 39438,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39434,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236376,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236377,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236378,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236379,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2025-12-27T06:00:00+00:00",
+    "null_rate": 0.005797101449275362,
+    "observed_rows": 69
+  },
+  {
+    "id": 6148686,
+    "name": "IIT Delhi, Delhi - IITM",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 14769468,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 14769470,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 14769472,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14769473,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14769474,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.006153846153846154,
+    "observed_rows": 65
+  },
+  {
+    "id": 5613,
+    "name": "ITO, New Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 17782,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12234750,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234751,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14869,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14878,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 12234754,
+        "unit": "ppb"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.006944444444444444,
+    "observed_rows": 48
+  },
+  {
+    "id": 5630,
+    "name": "Shadipur, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15119,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12234723,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15011,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 36210,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14959,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234727,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 14952,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234729,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.007692307692307693,
+    "observed_rows": 65
+  },
+  {
+    "id": 6924,
+    "name": "Indirapuram, Ghaziabad - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235774,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235776,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235777,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 19886,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 19884,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235780,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235781,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235782,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.007692307692307693,
+    "observed_rows": 65
+  },
+  {
+    "id": 6931,
+    "name": "Dwarka-Sector 8, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 19957,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235017,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235018,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 19906,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235020,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235021,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235022,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235023,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.007692307692307693,
+    "observed_rows": 65
+  },
+  {
+    "id": 5634,
+    "name": "Lodhi Road, New Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234709,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234711,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234712,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234713,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14984,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.007692307692307693,
+    "observed_rows": 65
+  },
+  {
+    "id": 8917,
+    "name": "Ashok Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234997,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 34768,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12235000,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 34785,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235002,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235003,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 34786,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235005,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.009230769230769232,
+    "observed_rows": 65
+  },
+  {
+    "id": 6932,
+    "name": "Alipur, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 19939,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235695,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 19950,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235697,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235698,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235699,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 19912,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235701,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.01016949152542373,
+    "observed_rows": 59
+  },
+  {
+    "id": 17,
+    "name": "R K Puram, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234782,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 36,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12234785,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234786,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234787,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234788,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 393,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234790,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.010256410256410256,
+    "observed_rows": 65
+  },
+  {
+    "id": 6359,
+    "name": "IHBAS, Dilshad Garden,New Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 17792,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12234732,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234733,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234734,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234735,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234736,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12234737,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12234738,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.010256410256410256,
+    "observed_rows": 65
+  },
+  {
+    "id": 10900,
+    "name": "Teri Gram, Gurugram - HSPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 36534,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 36535,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12236249,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 36538,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 36539,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236252,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 36540,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236253,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T11:30:00+00:00",
+    "null_rate": 0.011695906432748537,
+    "observed_rows": 57
+  },
+  {
+    "id": 7005,
+    "name": "Loni, Ghaziabad - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235783,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235785,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20292,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235786,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 20290,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235788,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235789,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235790,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.013440860215053764,
+    "observed_rows": 62
+  },
+  {
+    "id": 8915,
+    "name": "Wazirpur, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 34728,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235121,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235122,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 26026,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 34731,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235125,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235126,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235127,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.015384615384615385,
+    "observed_rows": 65
+  },
+  {
+    "id": 5622,
+    "name": "NSIT Dwarka, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234739,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234741,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234742,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 34957,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234744,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234745,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 14923,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234747,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.01951219512195122,
+    "observed_rows": 41
+  },
+  {
+    "id": 431,
+    "name": "IHBAS, Delhi - CPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 5361,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 747,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 13868,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 13867,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 4,
+    "last_seen": "2018-02-22T02:45:00+00:00",
+    "null_rate": 0.023255813953488372,
+    "observed_rows": 86
+  },
+  {
+    "id": 10820,
+    "name": "Sector 30, Faridabad - HSPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12236231,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12236233,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236234,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236235,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236236,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236237,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12236238,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12236239,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.025974025974025976,
+    "observed_rows": 33
+  },
+  {
+    "id": 6988,
+    "name": "Sector-116, Noida - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235939,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12241383,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235940,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235941,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235942,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235943,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235944,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235945,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.026923076923076925,
+    "observed_rows": 65
+  },
+  {
+    "id": 6960,
+    "name": "Patparganj, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235096,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235098,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20039,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235100,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235101,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235102,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 20055,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235104,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.028205128205128206,
+    "observed_rows": 65
+  },
+  {
+    "id": 10486,
+    "name": "Mundka, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235298,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235300,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 34765,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235302,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 34767,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235304,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235305,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235306,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.028205128205128206,
+    "observed_rows": 65
+  },
+  {
+    "id": 5404,
+    "name": "Pusa, Delhi - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234697,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 14084,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12234700,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234701,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234702,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03076923076923077,
+    "observed_rows": 65
+  },
+  {
+    "id": 6957,
+    "name": "Jawaharlal Nehru Stadium, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 20015,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 20017,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 20018,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20019,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235038,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235039,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235040,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235041,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:00:00+00:00",
+    "null_rate": 0.031746031746031744,
+    "observed_rows": 63
+  },
+  {
+    "id": 6257818,
+    "name": "Cantonment Area, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15578285,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15578287,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15578289,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15578290,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15578291,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15578292,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15578293,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15578294,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03653846153846154,
+    "observed_rows": 65
+  },
+  {
+    "id": 6357,
+    "name": "Punjabi Bagh, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 17769,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 17771,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 17774,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 17768,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 17776,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 17778,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-16T14:15:00+00:00",
+    "null_rate": 0.03663003663003663,
+    "observed_rows": 91
+  },
+  {
+    "id": 50,
+    "name": "Punjabi Bagh, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234791,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234793,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234794,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234795,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234796,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12234797,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 397,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12234799,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03736263736263736,
+    "observed_rows": 65
+  },
+  {
+    "id": 6929,
+    "name": "Major Dhyan Chand National Stadium, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 19901,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 19902,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 19903,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235046,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 19900,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235048,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 19899,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12235050,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.041025641025641026,
+    "observed_rows": 65
+  },
+  {
+    "id": 5598,
+    "name": "Sector - 125, Noida, UP - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235182,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235184,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235185,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235186,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235187,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235188,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235189,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235190,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.046153846153846156,
+    "observed_rows": 65
+  },
+  {
+    "id": 10487,
+    "name": "Anand Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 34787,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 34784,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 34783,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 34780,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 34771,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 34770,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2021-09-20T07:45:00+00:00",
+    "null_rate": 0.05774278215223097,
+    "observed_rows": 127
+  },
+  {
+    "id": 6299494,
+    "name": "Prashant Garden, Khora - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15888912,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15888914,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15888916,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15888917,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15888918,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15888919,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15888920,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15888921,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.06153846153846154,
+    "observed_rows": 65
+  },
+  {
+    "id": 6980,
+    "name": "Sector-1, Noida - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235946,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235948,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 20189,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20194,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 20206,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235952,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235953,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235954,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.06461538461538462,
+    "observed_rows": 65
+  },
+  {
+    "id": 5616,
+    "name": "Sector - 62, Noida, UP - IMD",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12234715,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12234717,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12234718,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12234719,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12234720,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.06461538461538462,
+    "observed_rows": 65
+  },
+  {
+    "id": 10831,
+    "name": "Rohini, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 36208,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 12235089,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 36213,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235091,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235092,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235093,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235094,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235095,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.0794871794871795,
+    "observed_rows": 65
+  },
+  {
+    "id": 6254665,
+    "name": "Commonwealth Sports Complex, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15554722,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15554724,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15554726,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15554727,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15554728,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15554729,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15554730,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15554731,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.08846153846153847,
+    "observed_rows": 65
+  },
+  {
+    "id": 6938,
+    "name": "Vivek Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 12235128,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12235130,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12235131,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12235132,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12235133,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12235134,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12235135,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12235136,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.09807692307692309,
+    "observed_rows": 65
+  },
+  {
+    "id": 6299678,
+    "name": "Ved Vihar-Loni, Ghaziabad - UPPCB",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15890335,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 15890337,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 15890339,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15890340,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15890341,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15890342,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 15890343,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 15890344,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.10174418604651163,
+    "observed_rows": 43
+  },
+  {
+    "id": 236,
+    "name": "Mandir Marg, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 386,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 389,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 390,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 391,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 388,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 387,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-02-21T21:15:00+00:00",
+    "null_rate": 0.15447154471544713,
+    "observed_rows": 82
+  },
+  {
+    "id": 5540,
+    "name": "Punjabi Bagh, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 14616,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 14613,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 14614,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 14612,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 14617,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 14615,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-13T11:30:00+00:00",
+    "null_rate": 0.3888888888888889,
+    "observed_rows": 6
+  },
+  {
+    "id": 5762,
+    "name": "Ashok Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15583,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15584,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15573,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15605,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15602,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15579,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T06:00:00+00:00",
+    "null_rate": 0.48717948717948717,
+    "observed_rows": 13
+  },
+  {
+    "id": 7044,
+    "name": "R K Puram, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 20410,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 20409,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 20406,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 20407,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 20411,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 20408,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2022-10-31T00:45:00+00:00",
+    "null_rate": 0.5,
+    "observed_rows": 4
+  },
+  {
+    "id": 5765,
+    "name": "Okhla Phase-2, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15597,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15600,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15598,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15624,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15627,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15599,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-13T10:00:00+00:00",
+    "null_rate": 0.5294117647058822,
+    "observed_rows": 17
+  },
+  {
+    "id": 5761,
+    "name": "Jahangirpuri, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15578,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15572,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15577,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15623,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15621,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15585,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T06:30:00+00:00",
+    "null_rate": 0.53125,
+    "observed_rows": 32
+  },
+  {
+    "id": 5754,
+    "name": "Jawaharlal Nehru Stadium, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15548,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15547,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15550,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15619,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15620,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15552,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T06:30:00+00:00",
+    "null_rate": 0.5606060606060606,
+    "observed_rows": 22
+  },
+  {
+    "id": 5766,
+    "name": "Nehru Nagar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15607,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15612,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15616,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15625,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15626,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15608,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-13T10:00:00+00:00",
+    "null_rate": 0.5789473684210527,
+    "observed_rows": 19
+  },
+  {
+    "id": 5759,
+    "name": "Sonia Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15568,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15567,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15566,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15591,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15595,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15565,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T05:00:00+00:00",
+    "null_rate": 0.59375,
+    "observed_rows": 32
+  },
+  {
+    "id": 5641,
+    "name": "Mandir Marg, New Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15028,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15025,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15023,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15022,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15014,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15013,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T04:30:00+00:00",
+    "null_rate": 0.619047619047619,
+    "observed_rows": 7
+  },
+  {
+    "id": 5753,
+    "name": "Vivek Vihar, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15545,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15544,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15543,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15615,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15604,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15546,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T06:00:00+00:00",
+    "null_rate": 0.625,
+    "observed_rows": 32
+  },
+  {
+    "id": 5755,
+    "name": "Major Dhyan Chand National Stadium, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15582,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15574,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15586,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15549,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15551,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15587,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T04:30:00+00:00",
+    "null_rate": 0.625,
+    "observed_rows": 8
+  },
+  {
+    "id": 5744,
+    "name": "Dr. Karni Singh Shooting Range, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15510,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15505,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15507,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15588,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15589,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15509,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T04:45:00+00:00",
+    "null_rate": 0.631578947368421,
+    "observed_rows": 19
+  },
+  {
+    "id": 5743,
+    "name": "Rohini, Delhi - DPCC",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 15503,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 15508,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 15506,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 15622,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 15618,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "so2": {
+        "id": 15504,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 6,
+    "last_seen": "2018-05-12T06:30:00+00:00",
+    "null_rate": 0.638888888888889,
+    "observed_rows": 24
+  },
+  {
+    "id": 15,
+    "name": "IGI Airport",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 27,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 28,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 29,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 26,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 30,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 5,
+    "last_seen": "0001-01-01T00:00:00+00:00",
+    "null_rate": 1.0,
+    "observed_rows": 0
+  },
+  {
+    "id": 16,
+    "name": "Civil Lines",
+    "city": "Delhi",
+    "sensors": {
+      "co": {
+        "id": 33,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 32,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 31,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 34,
+        "unit": "\u00b5g/m\u00b3"
+      }
+    },
+    "sensor_count": 4,
+    "last_seen": "0001-01-01T00:00:00+00:00",
+    "null_rate": 1.0,
+    "observed_rows": 0
+  }
+]
