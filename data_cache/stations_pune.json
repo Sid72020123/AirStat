@@ -44,8 +44,8 @@
     "city": "Pune",
     "sensors": {
       "co": {
-        "id": 12236438,
-        "unit": "ppb"
+        "id": 39447,
+        "unit": "\u00b5g/m\u00b3"
       },
       "no2": {
         "id": 39446,
@@ -60,7 +60,7 @@
         "unit": "\u00b5g/m\u00b3"
       },
       "pm25": {
-        "id": 39444,
+        "id": 12236443,
         "unit": "\u00b5g/m\u00b3"
       },
       "relativehumidity": {
@@ -76,49 +76,6 @@
     "last_seen": "2026-10-07T14:30:00+00:00",
     "null_rate": 0.0,
     "observed_rows": 38
-  },
-  {
-    "id": 11613,
-    "name": "Revenue Colony-Shivajinagar, Pune - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12236458,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12236460,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 39471,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 39467,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 39466,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12236464,
-        "unit": "%"
-      },
-      "so2": {
-        "id": 39469,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "temperature": {
-        "id": 12236466,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 8,
-    "last_seen": "2026-10-07T14:30:00+00:00",
-    "null_rate": 0.007692307692307693,
-    "observed_rows": 65
   },
   {
     "id": 11610,
@@ -287,6 +244,49 @@
     "last_seen": "2026-10-07T14:30:00+00:00",
     "null_rate": 0.027692307692307693,
     "observed_rows": 65
+  },
+  {
+    "id": 11613,
+    "name": "Revenue Colony-Shivajinagar, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 39470,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 39468,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12236461,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236462,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236463,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236464,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 39469,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236466,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-10-07T14:30:00+00:00",
+    "null_rate": 0.03225806451612903,
+    "observed_rows": 62
   },
   {
     "id": 60658,
