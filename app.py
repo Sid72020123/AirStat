@@ -1352,7 +1352,22 @@ def main() -> None:
                 width="stretch",
             )
 
-    st.header("4. Covariance and Correlation")
+    variable_x_label = display_name(variable_x)
+    variable_y_label = display_name(variable_y)
+    variable_x_unit = units.get(variable_x, "")
+    variable_y_unit = units.get(variable_y, "")
+    comparison_label = (
+        f"{variable_x_label} ({variable_x_unit})"
+        if variable_x_unit
+        else variable_x_label
+    )
+    comparison_label += " vs "
+    comparison_label += (
+        f"{variable_y_label} ({variable_y_unit})"
+        if variable_y_unit
+        else variable_y_label
+    )
+    st.header(f"4. Covariance and Correlation — {comparison_label}")
     paired = analysis_data[[variable_x, variable_y]].dropna()
     if variable_x == variable_y:
         st.warning("Choose two different variables for relationship analysis.")
@@ -1363,9 +1378,9 @@ def main() -> None:
         pearson = paired[variable_x].corr(paired[variable_y], method="pearson")
         spearman = paired[variable_x].corr(paired[variable_y], method="spearman")
         metrics = st.columns(3)
-        metrics[0].metric("Covariance", f"{covariance:.4g}")
-        metrics[1].metric("Pearson correlation", f"{pearson:.4f}")
-        metrics[2].metric("Spearman correlation", f"{spearman:.4f}")
+        metrics[0].metric(f"Covariance ({comparison_label})", f"{covariance:.4g}")
+        metrics[1].metric(f"Pearson correlation ({comparison_label})", f"{pearson:.4f}")
+        metrics[2].metric(f"Spearman correlation ({comparison_label})", f"{spearman:.4f}")
         st.info(f"Pearson interpretation: {correlation_interpretation(pearson)}")
         scatter = paired.rename(
             columns={
