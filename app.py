@@ -1380,7 +1380,9 @@ def main() -> None:
         metrics = st.columns(3)
         metrics[0].metric(f"Covariance ({comparison_label})", f"{covariance:.4g}")
         metrics[1].metric(f"Pearson correlation ({comparison_label})", f"{pearson:.4f}")
-        metrics[2].metric(f"Spearman correlation ({comparison_label})", f"{spearman:.4f}")
+        metrics[2].metric(
+            f"Spearman correlation ({comparison_label})", f"{spearman:.4f}"
+        )
         st.info(f"Pearson interpretation: {correlation_interpretation(pearson)}")
         scatter = paired.rename(
             columns={
@@ -1422,6 +1424,49 @@ def main() -> None:
         ),
         hide_index=True,
     )
+
+    st.header("6. Relationship Matrix")
+    matrix_options = {
+        "Covariance": "covariance",
+        "Pearson correlation": "pearson",
+        "Spearman correlation": "spearman",
+    }
+    matrix_choice = st.selectbox(
+        "Choose a relationship measure",
+        list(matrix_options),
+        help=(
+            "Select a measure to compare every pair of numerical variables. "
+            "The diagonal shows each variable compared with itself."
+        ),
+    )
+    matrix_data = analysis_data[
+        [column for column in variables if column in analysis_data]
+    ].apply(pd.to_numeric, errors="coerce")
+    if len(matrix_data.columns) < 2:
+        st.info(
+            "At least two numerical variables are needed for a relationship matrix."
+        )
+    else:
+        method = matrix_options[matrix_choice]
+        if method == "covariance":
+            relationship_matrix = matrix_data.cov()
+            color_range = None
+        elif method == "pearson":
+            relationship_matrix = matrix_data.corr(method="pearson")
+            color_range = (-1, 1)
+        else:
+            relationship_matrix = matrix_data.corr(method="spearman")
+            color_range = (-1, 1)
+        relationship_matrix = relationship_matrix.rename(
+            index=display_name, columns=display_name
+        )
+        styled_matrix = relationship_matrix.style.format("{:.3f}").background_gradient(
+            cmap="RdYlGn",
+            vmin=color_range[0] if color_range else None,
+            vmax=color_range[1] if color_range else None,
+        )
+        st.caption(f"{matrix_choice} for all numerical variables.")
+        st.dataframe(styled_matrix, width="stretch")
 
 
 if __name__ == "__main__":

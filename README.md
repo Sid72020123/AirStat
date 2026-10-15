@@ -9,6 +9,7 @@ The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
 - data collection, cleaning, missing-value awareness, sorting, and duplicate handling
 - mean, median, mode, variance, standard deviation, minimum, maximum, range, quartiles, and IQR
 - covariance, Pearson correlation, and Spearman correlation
+- selectable covariance and correlation matrices for all numerical variables
 - a time-series chart, histogram, box plot, and scatter plot
 - basic and conditional probability, including Bayes' theorem
 - continuous random variables and data-quality summaries
