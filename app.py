@@ -623,17 +623,11 @@ def fetch_data(
                 raise RuntimeError(f"No supported sensors found for {station_name}.")
 
             for parameter, (sensor_id, unit) in sensors.items():
-                sensor_response = client.sensors.get(sensor_id)
-                sensor = sensor_response.results[0] if sensor_response.results else None
-                sensor_end = end
-                if sensor is not None and sensor.datetime_last is not None:
-                    sensor_end = datetime.fromisoformat(
-                        sensor.datetime_last.utc.replace("Z", "+00:00")
-                    )
-                query_end = min(end, sensor_end)
-                query_start = query_end - timedelta(days=days_back)
+                # Query through now. Sensor metadata can lag behind the
+                # measurements endpoint, so datetime_last is not a safe cap.
+                query_start = end - timedelta(days=days_back)
                 frame = fetch_sensor_measurements(
-                    client, sensor_id, parameter, query_start, query_end
+                    client, sensor_id, parameter, query_start, end
                 )
                 if not frame.empty:
                     frames.append(frame)
@@ -1171,7 +1165,8 @@ def main() -> None:
                 )
         else:
             st.success(
-                f"Live OpenAQ data loaded through {data['datetime'].max().date()}."
+                "Live OpenAQ data loaded through "
+                f"{data['datetime'].max().strftime('%Y-%m-%d %H:%M UTC')}."
             )
         st.write(f"**City:** {city}")
         station_choice = st.selectbox(

@@ -114,8 +114,12 @@ observations. Offline fallback now prefers the cached file with the newest
 last observation, then compares missing-data rate and valid-value count. This
 prevents an older, more complete station file from hiding newer observations.
 The sidebar displays the exact offline filename and latest observation date, or
-confirms the latest date when live OpenAQ data is loaded. Restart Streamlit
-after code changes so the browser is connected to the updated application.
+confirms the latest UTC observation timestamp when live OpenAQ data is loaded.
+Refresh Data bypasses the local measurement cache and requests data through the
+current time. The latest timestamp still depends on when OpenAQ has published
+new measurements; the dashboard cannot retrieve observations that OpenAQ has not
+received or processed yet. Restart Streamlit after code changes so the browser is
+connected to the updated application.
 For live station selection, AirStat refreshes station metadata when its newest
 cached station is older than 14 days and only lists stations that reported
 within the last 14 days. Archived stations such as MIT-Kothrud station 60660,
