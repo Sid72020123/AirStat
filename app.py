@@ -16,7 +16,6 @@ from openaq import OpenAQ
 from openaq.core.exceptions import HTTPRateLimitError, OpenAQError
 from scipy.stats import binom, norm, poisson
 
-
 DATA_CACHE_DIR = Path(__file__).parent / "data_cache"
 DATA_CACHE_TTL = timedelta(hours=1)
 STATION_CACHE_TTL = timedelta(days=90)
@@ -59,6 +58,68 @@ DISPLAY_NAMES = {
     "windspeed": "Wind Speed",
     "relative_humidity": "Relative Humidity",
 }
+
+AQI_BREAKPOINTS = {
+    "pm25": [
+        (0, 30, 0, 50),
+        (31, 60, 51, 100),
+        (61, 90, 101, 200),
+        (91, 120, 201, 300),
+        (121, 250, 301, 400),
+        (251, np.inf, 401, 500),
+    ],
+    "pm10": [
+        (0, 50, 0, 50),
+        (51, 100, 51, 100),
+        (101, 250, 101, 200),
+        (251, 350, 201, 300),
+        (351, 430, 301, 400),
+        (431, np.inf, 401, 500),
+    ],
+    "no2": [
+        (0, 40, 0, 50),
+        (41, 80, 51, 100),
+        (81, 180, 101, 200),
+        (181, 280, 201, 300),
+        (281, 400, 301, 400),
+        (401, np.inf, 401, 500),
+    ],
+    "so2": [
+        (0, 40, 0, 50),
+        (41, 80, 51, 100),
+        (81, 380, 101, 200),
+        (381, 800, 201, 300),
+        (801, 1600, 301, 400),
+        (1601, np.inf, 401, 500),
+    ],
+    "o3": [
+        (0, 50, 0, 50),
+        (51, 100, 51, 100),
+        (101, 168, 101, 200),
+        (169, 208, 201, 300),
+        (209, 748, 301, 400),
+        (749, np.inf, 401, 500),
+    ],
+    "co": [
+        (0, 0.5, 0, 50),
+        (0.6, 1.0, 51, 100),
+        (1.1, 2.0, 101, 200),
+        (2.1, 3.0, 201, 300),
+        (3.1, 3.5, 301, 400),
+        (3.6, np.inf, 401, 500),
+    ],
+}
+
+AQI_AVERAGING = {
+    "pm25": ("24h", 16),
+    "pm10": ("24h", 16),
+    "no2": ("24h", 16),
+    "so2": ("24h", 16),
+    "o3": ("8h", 8),
+    "co": ("8h", 8),
+}
+
+
 class StationInfo(TypedDict):
     """Metadata needed to select and download one station."""
 
@@ -80,6 +141,68 @@ def parameter_key(name: str) -> str:
 def display_name(value: str) -> str:
     """Return a readable label for an API parameter."""
     return DISPLAY_NAMES.get(value, value)
+
+
+def aqi_sub_index(concentration: float, pollutant: str) -> float:
+    """Calculate one CPCB pollutant sub-index by linear interpolation."""
+    for concentration_low, concentration_high, index_low, index_high in AQI_BREAKPOINTS[
+        pollutant
+    ]:
+        if concentration_low <= concentration <= concentration_high:
+            if np.isinf(concentration_high):
+                return float(index_low)
+            return round(
+                index_low
+                + (index_high - index_low)
+                * (concentration - concentration_low)
+                / (concentration_high - concentration_low),
+                2,
+            )
+    return np.nan
+
+
+def aqi_category(aqi: float | None) -> str:
+    """Return the CPCB category for an AQI value."""
+    if aqi is None or pd.isna(aqi):
+        return "Insufficient data"
+    if aqi <= 50:
+        return "Good"
+    if aqi <= 100:
+        return "Satisfactory"
+    if aqi <= 200:
+        return "Moderate"
+    if aqi <= 300:
+        return "Poor"
+    if aqi <= 400:
+        return "Very Poor"
+    return "Severe"
+
+
+def calculate_current_aqi(
+    data: pd.DataFrame, units: dict[str, str]
+) -> tuple[float | None, str, dict[str, float]]:
+    """Calculate the latest CPCB AQI from available hourly pollutant data."""
+    if "datetime" not in data:
+        return None, "Insufficient data", {}
+
+    indexed = data.set_index("datetime").sort_index()
+    sub_indices: dict[str, float] = {}
+    for pollutant, (window, minimum_periods) in AQI_AVERAGING.items():
+        if pollutant not in indexed:
+            continue
+        values = pd.to_numeric(indexed[pollutant], errors="coerce")
+        average = values.rolling(window, min_periods=minimum_periods).mean().iloc[-1]
+        if pd.isna(average) or average < 0:
+            continue
+        if pollutant == "co" and "mg/m" not in units.get("co", "").lower():
+            average /= 1000
+        sub_indices[pollutant] = aqi_sub_index(float(average), pollutant)
+
+    particulate = {"pm25", "pm10"} & sub_indices.keys()
+    if len(sub_indices) < 3 or not particulate:
+        return None, "Insufficient data", sub_indices
+    aqi = max(sub_indices.values())
+    return aqi, aqi_category(aqi), sub_indices
 
 
 def location_city(location) -> str:
@@ -255,9 +378,9 @@ def offline_station_for_data(
     }
 
 
-def load_offline_default_data() -> tuple[
-    pd.DataFrame, dict[str, str], str, str, StationInfo, Path
-]:
+def load_offline_default_data() -> (
+    tuple[pd.DataFrame, dict[str, str], str, str, StationInfo, Path]
+):
     """Select the best valid Pune measurement CSV from data_cache."""
     station_metadata = {
         station["id"]: station for station in (read_station_cache(DEFAULT_CITY) or [])
@@ -328,10 +451,7 @@ def find_stations(
     if not force_refresh:
         cached_stations = read_station_cache(city)
         newest_cached = max(
-            (
-                station["last_seen"]
-                for station in (cached_stations or [])
-            ),
+            (station["last_seen"] for station in (cached_stations or [])),
             default=datetime.min.replace(tzinfo=timezone.utc),
         )
         if (
@@ -400,7 +520,9 @@ def find_stations(
             "Please try again later."
         )
     except OpenAQError as error:
-        raise RuntimeError(f"Could not evaluate stations near {city}: {error}") from error
+        raise RuntimeError(
+            f"Could not evaluate stations near {city}: {error}"
+        ) from error
 
     candidates.sort(
         key=lambda item: (
@@ -470,9 +592,8 @@ def fetch_data(
     if (
         not force_refresh
         and cache_path.exists()
-        and datetime.now(timezone.utc) - datetime.fromtimestamp(
-            cache_path.stat().st_mtime, timezone.utc
-        )
+        and datetime.now(timezone.utc)
+        - datetime.fromtimestamp(cache_path.stat().st_mtime, timezone.utc)
         < DATA_CACHE_TTL
     ):
         try:
@@ -491,7 +612,9 @@ def fetch_data(
         with OpenAQ(api_key=api_key) as client:
             location_response = client.locations.get(location_id)
             if not location_response.results:
-                raise RuntimeError(f"No metadata found for OpenAQ location {location_id}.")
+                raise RuntimeError(
+                    f"No metadata found for OpenAQ location {location_id}."
+                )
 
             location = location_response.results[0]
             station_name = location.name
@@ -546,7 +669,9 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     cleaned["datetime"] = pd.to_datetime(cleaned["datetime"], utc=True, errors="coerce")
     cleaned = cleaned.dropna(subset=["datetime"])
     cleaned.attrs["rows_before_cleaning"] = len(cleaned)
-    cleaned.attrs["duplicate_timestamps"] = int(cleaned.duplicated(subset=["datetime"]).sum())
+    cleaned.attrs["duplicate_timestamps"] = int(
+        cleaned.duplicated(subset=["datetime"]).sum()
+    )
     cleaned = cleaned.drop_duplicates(subset=["datetime"]).sort_values("datetime")
 
     for column in cleaned.columns:
@@ -567,16 +692,30 @@ def descriptive_statistics(series: pd.Series) -> pd.DataFrame:
     return pd.DataFrame(
         {
             "Statistic": [
-                "Mean", "Median", "Mode", "Variance", "Standard Deviation",
-                "Minimum", "Maximum", "Range", "Q1", "Q3", "IQR",
+                "Mean",
+                "Median",
+                "Mode",
+                "Variance",
+                "Standard Deviation",
+                "Minimum",
+                "Maximum",
+                "Range",
+                "Q1",
+                "Q3",
+                "IQR",
             ],
             "Value": [
-                f"{values.mean():.4g}", f"{values.median():.4g}",
+                f"{values.mean():.4g}",
+                f"{values.median():.4g}",
                 ", ".join(f"{value:g}" for value in mode),
-                f"{values.var():.4g}", f"{values.std():.4g}",
-                f"{values.min():.4g}", f"{values.max():.4g}",
-                f"{values.max() - values.min():.4g}", f"{q1:.4g}",
-                f"{q3:.4g}", f"{q3 - q1:.4g}",
+                f"{values.var():.4g}",
+                f"{values.std():.4g}",
+                f"{values.min():.4g}",
+                f"{values.max():.4g}",
+                f"{values.max() - values.min():.4g}",
+                f"{q1:.4g}",
+                f"{q3:.4g}",
+                f"{q3 - q1:.4g}",
             ],
         }
     )
@@ -586,7 +725,9 @@ def correlation_interpretation(value: float) -> str:
     """Give a deliberately simple interpretation without implying causation."""
     if pd.isna(value):
         return "There are not enough paired observations to calculate this correlation."
-    strength = "strong" if abs(value) >= 0.7 else "moderate" if abs(value) >= 0.4 else "weak"
+    strength = (
+        "strong" if abs(value) >= 0.7 else "moderate" if abs(value) >= 0.4 else "weak"
+    )
     direction = "positive" if value > 0 else "negative" if value < 0 else "no"
     return f"This is a {strength} {direction} relationship. Correlation does not prove causation."
 
@@ -604,9 +745,7 @@ def valid_series(data: pd.DataFrame, column: str) -> pd.Series:
 
 def suspicious_zero_flags(data: pd.DataFrame, column: str) -> pd.Series:
     """Flag zero readings that match common sensor/reporting error patterns."""
-    numeric = data.apply(
-        lambda values: pd.to_numeric(values, errors="coerce")
-    )
+    numeric = data.apply(lambda values: pd.to_numeric(values, errors="coerce"))
     values = numeric[column]
     zero = values.eq(0)
     previous_nonzero = values.shift(1).gt(0)
@@ -647,9 +786,15 @@ def render_unit_ii(
     st.subheader(f"Unit II: Probability and Distributions — {display_name(pollutant)}")
     tabs = st.tabs(
         [
-            "Probability", "Bayes Theorem", "Random Variables",
-            "Binomial", "Poisson", "Normal Distribution", "Z-Score",
-            "Normal Approximation", "Probability Insights",
+            "Probability",
+            "Bayes Theorem",
+            "Random Variables",
+            "Binomial",
+            "Poisson",
+            "Normal Distribution",
+            "Z-Score",
+            "Normal Approximation",
+            "Probability Insights",
         ]
     )
 
@@ -661,29 +806,49 @@ def render_unit_ii(
             f"Success is defined as `{display_name(pollutant)} > {threshold:g} {unit}`."
         )
         st.metric("P(pollutant exceeds threshold)", probability_sentence(p_exceed))
-        st.latex(r"P(E) = \frac{\text{number of exceedances}}{\text{valid observations}}")
+        st.latex(
+            r"P(E) = \frac{\text{number of exceedances}}{\text{valid observations}}"
+        )
         st.write(
             f"{int(exceed.sum())} of {len(values)} valid observations exceed the threshold."
         )
-        paired = data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        paired = (
+            data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        )
         if len(paired) >= 2 and variable_y != pollutant:
             condition = paired[variable_y] > threshold
-            conditional = float((paired[pollutant] > threshold)[condition].mean()) if condition.any() else np.nan
+            conditional = (
+                float((paired[pollutant] > threshold)[condition].mean())
+                if condition.any()
+                else np.nan
+            )
             st.markdown("### Conditional probability")
             st.metric(
                 f"P({display_name(pollutant)} > threshold | {display_name(variable_y)} > threshold)",
-                "Insufficient data" if pd.isna(conditional) else probability_sentence(conditional),
+                (
+                    "Insufficient data"
+                    if pd.isna(conditional)
+                    else probability_sentence(conditional)
+                ),
             )
             st.latex(r"P(A|B) = \frac{P(A \cap B)}{P(B)}")
         else:
-            st.info("Choose a different comparison variable with at least two paired observations.")
+            st.info(
+                "Choose a different comparison variable with at least two paired observations."
+            )
 
     with tabs[1]:
         st.markdown("### Bayes theorem")
-        st.write("Define A as the selected pollutant exceeding its threshold and B as the comparison variable exceeding the same threshold.")
-        paired = data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        st.write(
+            "Define A as the selected pollutant exceeding its threshold and B as the comparison variable exceeding the same threshold."
+        )
+        paired = (
+            data[[pollutant, variable_y]].apply(pd.to_numeric, errors="coerce").dropna()
+        )
         if len(paired) < 2 or variable_y == pollutant:
-            st.warning("Choose two different variables with at least two paired observations.")
+            st.warning(
+                "Choose two different variables with at least two paired observations."
+            )
         else:
             event_a = paired[pollutant] > threshold
             event_b = paired[variable_y] > threshold
@@ -696,9 +861,14 @@ def render_unit_ii(
             st.write(f"P(A|B) direct = {probability_sentence(p_a_given_b)}")
             bayes = p_b_given_a * p_a / p_b if p_b else np.nan
             st.latex(r"P(A|B) = \frac{P(B|A)P(A)}{P(B)}")
-            st.metric("Bayes result", "Insufficient data" if pd.isna(bayes) else probability_sentence(bayes))
+            st.metric(
+                "Bayes result",
+                "Insufficient data" if pd.isna(bayes) else probability_sentence(bayes),
+            )
             if not pd.isna(bayes):
-                st.info("The Bayes result should match the direct conditional probability up to rounding.")
+                st.info(
+                    "The Bayes result should match the direct conditional probability up to rounding."
+                )
 
     with tabs[2]:
         st.markdown("### Random variable")
@@ -709,8 +879,20 @@ def render_unit_ii(
         st.dataframe(
             pd.DataFrame(
                 {
-                    "Distribution information": ["Valid observations", "Minimum", "Mean", "Standard deviation", "Maximum"],
-                    "Value": [str(len(values)), f"{values.min():.4g}", f"{values.mean():.4g}", f"{values.std():.4g}", f"{values.max():.4g}"],
+                    "Distribution information": [
+                        "Valid observations",
+                        "Minimum",
+                        "Mean",
+                        "Standard deviation",
+                        "Maximum",
+                    ],
+                    "Value": [
+                        str(len(values)),
+                        f"{values.min():.4g}",
+                        f"{values.mean():.4g}",
+                        f"{values.std():.4g}",
+                        f"{values.max():.4g}",
+                    ],
                 }
             ),
             hide_index=True,
@@ -720,13 +902,29 @@ def render_unit_ii(
 
     with tabs[3]:
         st.markdown("### Binomial distribution")
-        n = st.number_input("Number of trials (n)", min_value=1, max_value=1000, value=10, key="binom_n")
-        k = st.number_input("Number of successes (k)", min_value=0, max_value=1000, value=2, key="binom_k")
+        n = st.number_input(
+            "Number of trials (n)", min_value=1, max_value=1000, value=10, key="binom_n"
+        )
+        k = st.number_input(
+            "Number of successes (k)",
+            min_value=0,
+            max_value=1000,
+            value=2,
+            key="binom_k",
+        )
         probability = float(binom.pmf(k, n, p_exceed)) if k <= n else 0.0
         st.latex(r"P(X=k) = {n \choose k}p^k(1-p)^{n-k}")
         st.metric(f"P(X = {k})", probability_sentence(probability))
         chart_k = np.arange(0, n + 1)
-        st.plotly_chart(px.bar(x=chart_k, y=binom.pmf(chart_k, n, p_exceed), labels={"x": "Successes", "y": "Probability"}, title="Binomial probabilities"), width="stretch")
+        st.plotly_chart(
+            px.bar(
+                x=chart_k,
+                y=binom.pmf(chart_k, n, p_exceed),
+                labels={"x": "Successes", "y": "Probability"},
+                title="Binomial probabilities",
+            ),
+            width="stretch",
+        )
 
     with tabs[4]:
         st.markdown("### Poisson distribution")
@@ -745,13 +943,27 @@ def render_unit_ii(
             st.warning("Insufficient valid dated data for daily exceedance counts.")
         else:
             lam = float(daily.mean())
-            poisson_k = st.number_input("Exceedances in one day (k)", min_value=0, max_value=100, value=1, key="poisson_k")
+            poisson_k = st.number_input(
+                "Exceedances in one day (k)",
+                min_value=0,
+                max_value=100,
+                value=1,
+                key="poisson_k",
+            )
             probability = float(poisson.pmf(poisson_k, lam))
             st.write(f"Estimated λ (average daily exceedances) = **{lam:.4g}**")
             st.latex(r"P(X=k) = e^{-\lambda}\frac{\lambda^k}{k!}")
             st.metric(f"P(X = {poisson_k})", probability_sentence(probability))
             chart_k = np.arange(0, max(10, int(daily.max()) + 5))
-            st.plotly_chart(px.bar(x=chart_k, y=poisson.pmf(chart_k, lam), labels={"x": "Daily exceedances", "y": "Probability"}, title="Poisson probabilities"), width="stretch")
+            st.plotly_chart(
+                px.bar(
+                    x=chart_k,
+                    y=poisson.pmf(chart_k, lam),
+                    labels={"x": "Daily exceedances", "y": "Probability"},
+                    title="Poisson probabilities",
+                ),
+                width="stretch",
+            )
 
     with tabs[5]:
         st.markdown("### Normal distribution")
@@ -759,44 +971,93 @@ def render_unit_ii(
         if standard_deviation == 0 or pd.isna(standard_deviation):
             st.warning("Insufficient variation to fit a normal curve.")
         else:
-            histogram = px.histogram(values, nbins=20, histnorm="probability density", title="Histogram with fitted normal curve")
+            histogram = px.histogram(
+                values,
+                nbins=20,
+                histnorm="probability density",
+                title="Histogram with fitted normal curve",
+            )
             x = np.linspace(values.min(), values.max(), 200)
-            histogram.add_scatter(x=x, y=norm.pdf(x, mean, standard_deviation), mode="lines", name="Fitted normal curve")
+            histogram.add_scatter(
+                x=x,
+                y=norm.pdf(x, mean, standard_deviation),
+                mode="lines",
+                name="Fitted normal curve",
+            )
             st.plotly_chart(histogram, width="stretch")
-            st.write(f"Mean = **{mean:.4g}**, standard deviation = **{standard_deviation:.4g}**. The curve is a simple model of the sample distribution, not a guarantee that the data is perfectly normal.")
+            st.write(
+                f"Mean = **{mean:.4g}**, standard deviation = **{standard_deviation:.4g}**. The curve is a simple model of the sample distribution, not a guarantee that the data is perfectly normal."
+            )
 
     with tabs[6]:
         st.markdown("### Z-score")
-        entered = st.number_input("Enter a pollutant value", value=float(values.mean()), key="z_value")
+        entered = st.number_input(
+            "Enter a pollutant value", value=float(values.mean()), key="z_value"
+        )
         mean, standard_deviation = float(values.mean()), float(values.std())
         if standard_deviation == 0:
-            st.warning("A Z-score cannot be calculated when all valid values are identical.")
+            st.warning(
+                "A Z-score cannot be calculated when all valid values are identical."
+            )
         else:
             z = (entered - mean) / standard_deviation
             st.metric("Z-score", f"{z:.4f}")
-            interpretation = "near the mean" if abs(z) < 1 else "above the mean" if z > 0 else "below the mean"
-            st.write(f"Formula: z = (value − mean) / standard deviation = ({entered:.4g} − {mean:.4g}) / {standard_deviation:.4g}. This value is **{interpretation}**.")
+            interpretation = (
+                "near the mean"
+                if abs(z) < 1
+                else "above the mean" if z > 0 else "below the mean"
+            )
+            st.write(
+                f"Formula: z = (value − mean) / standard deviation = ({entered:.4g} − {mean:.4g}) / {standard_deviation:.4g}. This value is **{interpretation}**."
+            )
 
     with tabs[7]:
         st.markdown("### Normal approximation to binomial")
-        n_approx = st.number_input("Trials (n)", min_value=1, max_value=1000, value=30, key="approx_n")
-        p_approx = st.slider("Success probability (p)", 0.0, 1.0, min(max(p_exceed, 0.01), 0.99), key="approx_p")
-        k_approx = st.number_input("Successes (k)", min_value=0, max_value=1000, value=10, key="approx_k")
-        exact = float(binom.pmf(k_approx, n_approx, p_approx)) if k_approx <= n_approx else 0.0
+        n_approx = st.number_input(
+            "Trials (n)", min_value=1, max_value=1000, value=30, key="approx_n"
+        )
+        p_approx = st.slider(
+            "Success probability (p)",
+            0.0,
+            1.0,
+            min(max(p_exceed, 0.01), 0.99),
+            key="approx_p",
+        )
+        k_approx = st.number_input(
+            "Successes (k)", min_value=0, max_value=1000, value=10, key="approx_k"
+        )
+        exact = (
+            float(binom.pmf(k_approx, n_approx, p_approx))
+            if k_approx <= n_approx
+            else 0.0
+        )
         mu, sigma = n_approx * p_approx, np.sqrt(n_approx * p_approx * (1 - p_approx))
-        approx = float(norm.cdf(k_approx + 0.5, mu, sigma) - norm.cdf(k_approx - 0.5, mu, sigma)) if sigma else (1.0 if k_approx == mu else 0.0)
+        approx = (
+            float(
+                norm.cdf(k_approx + 0.5, mu, sigma)
+                - norm.cdf(k_approx - 0.5, mu, sigma)
+            )
+            if sigma
+            else (1.0 if k_approx == mu else 0.0)
+        )
         left, right = st.columns(2)
         left.metric("Exact binomial P(X = k)", probability_sentence(exact))
         right.metric("Normal approximation", probability_sentence(approx))
         st.latex(r"P(X=k) \approx P(k-0.5 < Y < k+0.5)")
-        st.info("The approximation is generally appropriate when np and n(1-p) are both at least 5. Continuity correction of 0.5 is used.")
+        st.info(
+            "The approximation is generally appropriate when np and n(1-p) are both at least 5. Continuity correction of 0.5 is used."
+        )
 
     with tabs[8]:
         st.markdown("### Probability insights")
-        st.write(f"- Estimated probability of exceeding the threshold: **{probability_sentence(p_exceed)}**.")
+        st.write(
+            f"- Estimated probability of exceeding the threshold: **{probability_sentence(p_exceed)}**."
+        )
         insight_daily = (
             data[["datetime", pollutant]]
-            .assign(value=lambda frame: pd.to_numeric(frame[pollutant], errors="coerce"))
+            .assign(
+                value=lambda frame: pd.to_numeric(frame[pollutant], errors="coerce")
+            )
             .dropna(subset=["value"])
             .assign(
                 day=lambda frame: frame["datetime"].dt.date,
@@ -806,8 +1067,12 @@ def render_unit_ii(
             .sum()
         )
         average_daily = float(insight_daily.mean()) if not insight_daily.empty else 0.0
-        st.write(f"- Average daily exceedances in the selected period: **{average_daily:.2f}**.")
-        st.write("- A Z-score with absolute value at least 2 is a simple indicator of an unusually distant observation; it is not a formal hypothesis test.")
+        st.write(
+            f"- Average daily exceedances in the selected period: **{average_daily:.2f}**."
+        )
+        st.write(
+            "- A Z-score with absolute value at least 2 is a simple indicator of an unusually distant observation; it is not a formal hypothesis test."
+        )
 
 
 def main() -> None:
@@ -945,7 +1210,9 @@ def main() -> None:
             format_func=display_name,
         )
         pollutant_values = valid_series(data, pollutant)
-        default_threshold = float(pollutant_values.median()) if not pollutant_values.empty else 0.0
+        default_threshold = (
+            float(pollutant_values.median()) if not pollutant_values.empty else 0.0
+        )
         threshold = st.number_input(
             f"Exceedance threshold ({units.get(pollutant, '')})",
             value=default_threshold,
@@ -1003,13 +1270,43 @@ def main() -> None:
         )
 
     if dashboard_section.startswith("Unit II"):
-        render_unit_ii(data=analysis_data, pollutant=pollutant, threshold=threshold,
-                       unit=units.get(pollutant, ""),
-                       variable_y=variable_y)
+        render_unit_ii(
+            data=analysis_data,
+            pollutant=pollutant,
+            threshold=threshold,
+            unit=units.get(pollutant, ""),
+            variable_y=variable_y,
+        )
         return
 
     st.header("Unit I — Descriptive Statistics")
     st.header("1. Dataset Overview")
+    current_aqi, current_aqi_category, aqi_indices = calculate_current_aqi(
+        filtered, units
+    )
+    st.header("Current AQI")
+    if current_aqi is None:
+        st.info(
+            "Insufficient data for CPCB AQI. At least three pollutant indices, "
+            "including PM2.5 or PM10, are required."
+        )
+    else:
+        aqi_columns = st.columns(2)
+        aqi_columns[0].metric("CPCB AQI", f"{current_aqi:.0f}")
+        aqi_columns[1].metric("Category", current_aqi_category)
+        st.caption(
+            "Calculated from the latest available rolling averages in the selected "
+            "date range. PM2.5, PM10, NO2, and SO2 use 24 hours; O3 and CO use 8 hours."
+        )
+        st.dataframe(
+            pd.DataFrame(
+                [
+                    {"Pollutant": display_name(name), "Sub-index": value}
+                    for name, value in aqi_indices.items()
+                ]
+            ),
+            hide_index=True,
+        )
     overview = st.columns(6)
     overview[0].metric("City", city)
     overview[1].metric("Station", station)
@@ -1021,7 +1318,9 @@ def main() -> None:
         f"Selected period: **{start_date} to {end_date}** | "
         f"Available data: **{first_date} to {last_date}**"
     )
-    st.dataframe(analysis_data.drop(columns=["suspicious_zero"]).head(10), width="stretch")
+    st.dataframe(
+        analysis_data.drop(columns=["suspicious_zero"]).head(10), width="stretch"
+    )
 
     st.header("2. Descriptive Statistics")
     if values.empty:
@@ -1039,7 +1338,9 @@ def main() -> None:
                 line_data,
                 x="datetime",
                 y=pollutant,
-                labels={pollutant: f"{display_name(pollutant)} ({units.get(pollutant, '')})"},
+                labels={
+                    pollutant: f"{display_name(pollutant)} ({units.get(pollutant, '')})"
+                },
                 title="Time series",
             ),
             width="stretch",
@@ -1072,8 +1373,10 @@ def main() -> None:
         metrics[2].metric("Spearman correlation", f"{spearman:.4f}")
         st.info(f"Pearson interpretation: {correlation_interpretation(pearson)}")
         scatter = paired.rename(
-            columns={variable_x: display_name(variable_x),
-                     variable_y: display_name(variable_y)}
+            columns={
+                variable_x: display_name(variable_x),
+                variable_y: display_name(variable_y),
+            }
         )
         st.plotly_chart(
             px.scatter(
@@ -1088,7 +1391,9 @@ def main() -> None:
     st.header("5. Data Quality")
     quality = {
         "Total rows downloaded": data.attrs.get("rows_before_cleaning", len(data)),
-        "Missing values in selected variable": int(analysis_data[pollutant].isna().sum()),
+        "Missing values in selected variable": int(
+            analysis_data[pollutant].isna().sum()
+        ),
         "Suspicious zero values": int(filtered["suspicious_zero"].sum()),
         "Suspicious zeros excluded": (
             int(filtered["suspicious_zero"].sum())

@@ -15,8 +15,9 @@ The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
 - binomial, Poisson, and normal distributions
 - Z-scores and normal approximation to the binomial distribution
 - plain-language probability insights for the selected pollutant
+- CPCB AQI calculated from the selected station's pollutant measurements
 
-AQI, hypothesis testing, confidence intervals, forecasting, and machine-learning
+Hypothesis testing, confidence intervals, forecasting, and machine-learning
 models are deliberately not included.
 
 ## Setup
@@ -120,7 +121,13 @@ cached station is older than 14 days and only lists stations that reported
 within the last 14 days. Archived stations such as MIT-Kothrud station 60660,
 whose OpenAQ record ended in July 2022, are therefore not treated as live.
 
+The dashboard calculates the current CPCB AQI locally from the selected station.
+It uses 24-hour rolling averages for PM2.5, PM10, NO2, and SO2, and 8-hour rolling
+averages for O3 and CO. The AQI is the highest valid pollutant sub-index and
+requires at least three pollutant indices, including PM2.5 or PM10. If there is
+not enough data, the dashboard shows "Insufficient data" instead of an AQI.
+
 The dashboard uses one automatically selected station at a time. Some cities
 may not have a station with recent data or all supported variables. Correlation
 describes association only; it does not establish causation. The dashboard does
-not calculate AQI, forecast pollution, or train prediction models.
+not forecast pollution or train prediction models.
