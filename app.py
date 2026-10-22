@@ -18,8 +18,8 @@ from scipy.stats import binom, norm, poisson
 
 DATA_CACHE_DIR = Path(__file__).parent / "data_cache"
 DATA_CACHE_TTL = timedelta(hours=1)
-STATION_CACHE_TTL = timedelta(days=3)
-LIVE_STATION_MAX_AGE = timedelta(days=2)
+STATION_CACHE_TTL = timedelta(days=90)
+LIVE_STATION_MAX_AGE = timedelta(days=14)
 LOOKBACK_DAYS = 90
 LOOKBACK_OPTIONS = (30, 90, 180, 365)
 CITY_COORDINATES = {
