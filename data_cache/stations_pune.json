@@ -1,44 +1,5 @@
 [
   {
-    "id": 3409523,
-    "name": "Bhumkar Nagar, Pune - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12238671,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12238673,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 12238674,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 12238675,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12238676,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12238677,
-        "unit": "%"
-      },
-      "temperature": {
-        "id": 12238678,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.0,
-    "observed_rows": 72
-  },
-  {
     "id": 3409526,
     "name": "Panchawati_Pashan, Pune - IITM",
     "city": "Pune",
@@ -73,9 +34,9 @@
       }
     },
     "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
+    "last_seen": "2026-11-04T13:00:00+00:00",
     "null_rate": 0.0,
-    "observed_rows": 72
+    "observed_rows": 52
   },
   {
     "id": 3409435,
@@ -116,177 +77,9 @@
       }
     },
     "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
+    "last_seen": "2026-11-04T13:00:00+00:00",
     "null_rate": 0.0,
-    "observed_rows": 60
-  },
-  {
-    "id": 3409438,
-    "name": "Katraj Dairy, Pune - MPCB",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12248365,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12248367,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 12248368,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 12248369,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12248370,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12248371,
-        "unit": "%"
-      },
-      "so2": {
-        "id": 12248372,
-        "unit": "ppb"
-      },
-      "temperature": {
-        "id": 12248373,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.00211864406779661,
-    "observed_rows": 59
-  },
-  {
-    "id": 3409439,
-    "name": "Savitribai Phule Pune University, Pune - MPCB",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12238000,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12238002,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 12238003,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 12238004,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12238005,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12238006,
-        "unit": "%"
-      },
-      "so2": {
-        "id": 12238007,
-        "unit": "ppb"
-      },
-      "temperature": {
-        "id": 12238008,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.008680555555555556,
-    "observed_rows": 72
-  },
-  {
-    "id": 3409528,
-    "name": "Savta Mali Nagar, Pimpri-Chinchwad - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12238705,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12238707,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 12238708,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 12238709,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12238710,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12343702,
-        "unit": "%"
-      },
-      "so2": {
-        "id": 17766245,
-        "unit": "ppb"
-      },
-      "temperature": {
-        "id": 12343703,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.019444444444444448,
-    "observed_rows": 72
-  },
-  {
-    "id": 11610,
-    "name": "Transport Nagar-Nigdi, Pune - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12236452,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 12236454,
-        "unit": "ppb"
-      },
-      "o3": {
-        "id": 12236455,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 12236456,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12236457,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12343700,
-        "unit": "%"
-      },
-      "temperature": {
-        "id": 12343701,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.02222222222222222,
-    "observed_rows": 72
+    "observed_rows": 47
   },
   {
     "id": 3409437,
@@ -327,52 +120,130 @@
       }
     },
     "sensor_count": 8,
-    "last_seen": "2026-10-16T01:30:00+00:00",
-    "null_rate": 0.024305555555555552,
-    "observed_rows": 72
+    "last_seen": "2026-11-04T13:15:00+00:00",
+    "null_rate": 0.007075471698113208,
+    "observed_rows": 53
   },
   {
-    "id": 11613,
-    "name": "Revenue Colony-Shivajinagar, Pune - IITM",
+    "id": 3409439,
+    "name": "Savitribai Phule Pune University, Pune - MPCB",
     "city": "Pune",
     "sensors": {
       "co": {
-        "id": 12236458,
+        "id": 12238000,
         "unit": "ppb"
       },
       "no2": {
-        "id": 12236460,
+        "id": 12238002,
         "unit": "ppb"
       },
       "o3": {
-        "id": 39471,
+        "id": 12238003,
         "unit": "\u00b5g/m\u00b3"
       },
       "pm10": {
-        "id": 12236462,
+        "id": 12238004,
         "unit": "\u00b5g/m\u00b3"
       },
       "pm25": {
-        "id": 39466,
+        "id": 12238005,
         "unit": "\u00b5g/m\u00b3"
       },
       "relativehumidity": {
-        "id": 12236464,
+        "id": 12238006,
         "unit": "%"
       },
       "so2": {
-        "id": 39469,
-        "unit": "\u00b5g/m\u00b3"
+        "id": 12238007,
+        "unit": "ppb"
       },
       "temperature": {
-        "id": 12236466,
+        "id": 12238008,
         "unit": "c"
       }
     },
     "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.07936507936507936,
-    "observed_rows": 63
+    "last_seen": "2026-11-04T13:15:00+00:00",
+    "null_rate": 0.009433962264150943,
+    "observed_rows": 53
+  },
+  {
+    "id": 11610,
+    "name": "Transport Nagar-Nigdi, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 12236452,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12236454,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236455,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236456,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236457,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12343700,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 12343701,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 7,
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.009433962264150943,
+    "observed_rows": 53
+  },
+  {
+    "id": 3409523,
+    "name": "Bhumkar Nagar, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 12238671,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238673,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238674,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238675,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238676,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12238677,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 12238678,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 7,
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.010781671159029648,
+    "observed_rows": 53
   },
   {
     "id": 3409331,
@@ -409,9 +280,134 @@
       }
     },
     "sensor_count": 7,
-    "last_seen": "2026-10-15T08:45:00+00:00",
-    "null_rate": 0.08055555555555556,
-    "observed_rows": 72
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.02692307692307692,
+    "observed_rows": 52
+  },
+  {
+    "id": 3409438,
+    "name": "Katraj Dairy, Pune - MPCB",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 12248365,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12248367,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12248368,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12248369,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12248370,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12248371,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 12248372,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12248373,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-11-04T13:15:00+00:00",
+    "null_rate": 0.028846153846153844,
+    "observed_rows": 39
+  },
+  {
+    "id": 11613,
+    "name": "Revenue Colony-Shivajinagar, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 39470,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 39468,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 39471,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12236462,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236463,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236464,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 39469,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "temperature": {
+        "id": 12236466,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.06097560975609756,
+    "observed_rows": 41
+  },
+  {
+    "id": 11609,
+    "name": "Mhada Colony, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 12236438,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12236440,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12236441,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 39445,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 39444,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 15090167,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 15090168,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 7,
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.06918238993710692,
+    "observed_rows": 53
   },
   {
     "id": 3409436,
@@ -452,9 +448,91 @@
       }
     },
     "sensor_count": 8,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.15416666666666667,
-    "observed_rows": 60
+    "last_seen": "2026-11-04T11:00:00+00:00",
+    "null_rate": 0.08894230769230768,
+    "observed_rows": 52
+  },
+  {
+    "id": 60658,
+    "name": "Hadapsar, Pune - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 389768,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "no2": {
+        "id": 389753,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "o3": {
+        "id": 12236447,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 389758,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12236449,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12236450,
+        "unit": "%"
+      },
+      "temperature": {
+        "id": 12236451,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 7,
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.09433962264150944,
+    "observed_rows": 53
+  },
+  {
+    "id": 3409528,
+    "name": "Savta Mali Nagar, Pimpri-Chinchwad - IITM",
+    "city": "Pune",
+    "sensors": {
+      "co": {
+        "id": 12238705,
+        "unit": "ppb"
+      },
+      "no2": {
+        "id": 12238707,
+        "unit": "ppb"
+      },
+      "o3": {
+        "id": 12238708,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm10": {
+        "id": 12238709,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "pm25": {
+        "id": 12238710,
+        "unit": "\u00b5g/m\u00b3"
+      },
+      "relativehumidity": {
+        "id": 12343702,
+        "unit": "%"
+      },
+      "so2": {
+        "id": 17766245,
+        "unit": "ppb"
+      },
+      "temperature": {
+        "id": 12343703,
+        "unit": "c"
+      }
+    },
+    "sensor_count": 8,
+    "last_seen": "2026-11-04T13:15:00+00:00",
+    "null_rate": 0.09615384615384615,
+    "observed_rows": 52
   },
   {
     "id": 3410005,
@@ -491,86 +569,8 @@
       }
     },
     "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.18888888888888888,
-    "observed_rows": 72
-  },
-  {
-    "id": 60658,
-    "name": "Hadapsar, Pune - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 12236444,
-        "unit": "ppb"
-      },
-      "no2": {
-        "id": 389753,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "o3": {
-        "id": 389774,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 389758,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 12236449,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 12236450,
-        "unit": "%"
-      },
-      "temperature": {
-        "id": 12236451,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 0.40384615384615385,
-    "observed_rows": 52
-  },
-  {
-    "id": 11609,
-    "name": "Mhada Colony, Pune - IITM",
-    "city": "Pune",
-    "sensors": {
-      "co": {
-        "id": 39447,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "no2": {
-        "id": 39446,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "o3": {
-        "id": 39448,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm10": {
-        "id": 39445,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "pm25": {
-        "id": 39444,
-        "unit": "\u00b5g/m\u00b3"
-      },
-      "relativehumidity": {
-        "id": 15090167,
-        "unit": "%"
-      },
-      "temperature": {
-        "id": 15090168,
-        "unit": "c"
-      }
-    },
-    "sensor_count": 7,
-    "last_seen": "2026-10-18T08:30:00+00:00",
-    "null_rate": 1.0,
-    "observed_rows": 0
+    "last_seen": "2026-11-04T13:00:00+00:00",
+    "null_rate": 0.10943396226415095,
+    "observed_rows": 53
   }
 ]

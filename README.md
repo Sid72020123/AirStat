@@ -17,9 +17,10 @@ The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
 - Z-scores and normal approximation to the binomial distribution
 - plain-language probability insights for the selected pollutant
 - CPCB AQI calculated from the selected station's pollutant measurements
+- sampling distributions, the central limit theorem, confidence intervals, and
+  introductory hypothesis tests using the selected cleaned dataset
 
-Hypothesis testing, confidence intervals, forecasting, and machine-learning
-models are deliberately not included.
+Forecasting and machine-learning models are deliberately not included.
 
 ## Setup
 
@@ -69,6 +70,16 @@ API requests. Its tabs provide threshold probabilities, Bayes calculations,
 random-variable summaries, binomial and Poisson models, a fitted normal curve,
 Z-scores, normal approximation with continuity correction, and short air-quality
 interpretations.
+
+**Unit III — Sampling and Statistical Inference** is a separate sidebar section
+with tabs for sampling distributions, the central limit theorem, estimation and
+confidence intervals, hypothesis-testing concepts, one-sample Z and t tests,
+Welch independent t-tests, matched paired t-tests, one-way ANOVA, and a summary
+of statistical conclusions. It reuses the already loaded data and makes no
+additional API requests. Daily averages are used for independent-group and
+ANOVA demonstrations so repeated hourly readings do not dominate those
+comparisons. The Z-test asks for a known population standard deviation; it does
+not silently substitute the sample standard deviation.
 
 Unit II preserves numeric zero values and reports them separately from missing or
 invalid observations. Statistical calculations use only finite numeric values.

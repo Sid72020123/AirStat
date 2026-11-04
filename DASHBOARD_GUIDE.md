@@ -457,7 +457,44 @@ summarize the sample and are not medical or regulatory advice.
 2. A large standard deviation can be reported as substantial variation rather
    than as evidence that every future observation will be extreme.
 
-## 12. Good Reporting Practice
+## 12. Unit III — Sampling and Statistical Inference
+
+Unit III is a separate dashboard section with ten tabs. It reuses the selected
+cleaned and cached data and does not make additional API requests.
+
+### 12.1 Sampling and estimation
+
+- **Sampling Distribution:** repeatedly samples valid observations and plots
+  their sample means.
+- **Central Limit Theorem:** compares the sample-mean histogram with a fitted
+  normal curve as sample size changes.
+- **Estimation and Confidence Intervals:** reports the sample mean, a sample
+  proportion above a chosen threshold, and 90%, 95%, or 99% mean intervals.
+
+### 12.2 Hypothesis tests
+
+The basics tab explains H0, H1, alpha, p-values, one- and two-tailed tests, and
+Type I and Type II errors. The test tabs display the hypotheses, significance
+level, statistic, p-value, decision, and plain-language interpretation.
+
+- **One-sample Z-test:** requires an explicitly supplied known population
+  standard deviation.
+- **One-sample t-test:** uses the sample standard deviation when the population
+  standard deviation is unknown.
+- **Independent t-test:** compares weekday/weekend or first-half/second-half
+  daily averages using Welch's unequal-variance test and a box plot.
+- **Paired t-test:** matches the same hours across two selected dates; unrelated
+  observations are not paired.
+- **One-way ANOVA:** compares daily averages across months when at least three
+  groups have enough observations.
+
+Daily averages are used for independent-group and ANOVA demonstrations so
+repeated hourly measurements do not dominate the inference. Small-group warnings
+are shown where normality assumptions deserve extra care. A p-value below alpha
+means **reject H0**; otherwise the correct wording is **fail to reject H0**,
+never “prove” or “accept” H0.
+
+## 13. Good Reporting Practice
 
 When presenting a result from AirStat, include:
 
