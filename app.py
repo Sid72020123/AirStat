@@ -1672,7 +1672,7 @@ def main() -> None:
             ],
         )
 
-    if dashboard_section.startswith("Unit II"):
+    if dashboard_section == "Unit II — Probability":
         render_unit_ii(
             data=analysis_data,
             pollutant=pollutant,
@@ -1682,7 +1682,7 @@ def main() -> None:
         )
         return
 
-    if dashboard_section.startswith("Unit III"):
+    if dashboard_section == "Unit III — Sampling and Statistical Inference":
         render_unit_iii(
             data=analysis_data,
             pollutant=pollutant,
