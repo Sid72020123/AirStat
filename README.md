@@ -4,7 +4,7 @@ AirStat is a beginner-friendly Streamlit dashboard for statistical analysis of
 hourly air-quality measurements from OpenAQ monitoring stations across major
 Indian cities. **Pune** is selected by default.
 
-The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
+The dashboard covers the full four-unit syllabus (Units I–IV):
 
 - data collection, cleaning, missing-value awareness, sorting, and duplicate handling
 - mean, median, mode, variance, standard deviation, minimum, maximum, range, quartiles, and IQR
@@ -20,7 +20,61 @@ The dashboard covers a beginner-friendly Unit I and Unit II syllabus:
 - sampling distributions, the central limit theorem, confidence intervals, and
   introductory hypothesis tests using the selected cleaned dataset
 
-Forecasting and machine-learning models are deliberately not included.
+- **Unit IV:** Pearson/Spearman correlation with a heatmap and interactive scatter plot,
+  simple and multiple linear regression, the five regression assumptions
+  (residual plots, Q-Q plot, VIF), MAE/MSE/RMSE/R² on a reproducible test split,
+  an automatic plain-language interpretation, and an end-to-end analytics workflow
+
+Only linear regression is used for prediction. Random forests, boosting, neural
+networks and forecasting models are deliberately not included.
+
+## Project structure
+
+```text
+AirStat/
+├── app.py                  # page set-up + navigation only
+├── units/
+│   ├── overview.py         # dataset overview + syllabus map
+│   ├── aqi.py              # CPCB AQI page
+│   ├── unit1.py            # Unit I   - data exploration & statistical foundations
+│   ├── unit2.py            # Unit II  - probability & distributions
+│   ├── unit3.py            # Unit III - sampling & statistical inference
+│   ├── unit4.py            # Unit IV  - correlation, regression, predictive analytics
+│   └── data_quality.py     # data-quality page
+├── components/
+│   ├── navigation.py       # sidebar: navigation, data selection, AppContext
+│   ├── charts.py           # reusable Plotly charts (Unit IV)
+│   └── common.py           # AppContext + shared helpers (metric cards, conclusions)
+├── utils/
+│   ├── config.py           # constants, city list, display names
+│   ├── data_loader.py      # OpenAQ download, stations, CSV/JSON cache
+│   ├── data_cleaning.py    # cleaning, zero flags, quality summary
+│   └── aqi_calculator.py   # CPCB AQI
+├── data_cache/             # cached station lists and measurement CSVs
+├── tests/                  # unittest suites (logic + headless app tests)
+├── requirements.txt
+└── .env                    # optional OPENAQ_API_KEY
+```
+
+Each unit file is self-contained: its calculations and its Streamlit page live in
+the same module and only the shared helpers above are imported.
+
+| Team member | Study and explain |
+|---|---|
+| Member 1 | `units/unit1.py` (plus `utils/data_cleaning.py` and `utils/aqi_calculator.py`) |
+| Member 2 | `units/unit2.py` |
+| Member 3 | `units/unit3.py` |
+| Member 4 | `units/unit4.py` (plus `components/charts.py`) |
+
+This is a suggested split; any member can read any file because the units do not depend on each other.
+
+## Running the tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The tests run offline: the OpenAQ client is patched to fail if it is ever called.
 
 ## Setup
 
@@ -63,8 +117,8 @@ descriptive statistics and updates the charts and relationship analysis. The
 available history still depends on how long the selected station and sensor
 have been reporting.
 
-Use the **Dashboard section** control in the sidebar to switch between **Unit I
-— Descriptive Statistics** and **Unit II — Probability**. Unit II uses the same
+Use the **Navigate** control at the top of the sidebar to switch between
+**Overview, AQI, Unit I, Unit II, Unit III, Unit IV and Data Quality**. Unit II uses the same
 cleaned, cached data and selected pollutant as Unit I, so it does not make extra
 API requests. Its tabs provide threshold probabilities, Bayes calculations,
 random-variable summaries, binomial and Poisson models, a fitted normal curve,
@@ -140,10 +194,25 @@ whose OpenAQ record ended in July 2022, are therefore not treated as live.
 The dashboard calculates the current CPCB AQI locally from the selected station.
 It uses 24-hour rolling averages for PM2.5, PM10, NO2, and SO2, and 8-hour rolling
 averages for O3 and CO. The AQI is the highest valid pollutant sub-index and
-requires at least three pollutant indices, including PM2.5 or PM10. If there is
-not enough data, the dashboard shows "Insufficient data" instead of an AQI.
+requires at least three pollutant indices, including PM2.5 or PM10. It is
+reported for the latest hour that satisfies these rules (the newest rows can
+contain gaps). If there is not enough data, the dashboard shows "Insufficient
+data" instead of an AQI.
+
+**Unit IV — Correlation, Regression and Predictive Analytics** has seven tabs:
+correlation (Pearson, Spearman, heatmap, interactive scatter), simple linear
+regression, multiple linear regression, regression assumptions, model
+evaluation, interpretation, and the analytics workflow. Models are fitted with
+NumPy least squares (no extra libraries), on complete-case rows only (missing
+values are dropped, zeros are kept), using a fixed-seed train/test split. A
+chronological split is also available, which is a stricter test for time-ordered
+data. The dependent variable is never offered as a predictor, and timestamps/IDs
+are never used as predictors. The maths was cross-checked against scikit-learn
+and statsmodels while developing it.
 
 The dashboard uses one automatically selected station at a time. Some cities
-may not have a station with recent data or all supported variables. Correlation
-describes association only; it does not establish causation. The dashboard does
-not forecast pollution or train prediction models.
+may not have a station with recent data or all supported variables (wind speed is
+often missing; Unit IV uses whichever variables exist). Correlation and
+regression describe association only; they do not establish causation. Hourly
+readings are autocorrelated, so p-values and test scores can look better than
+real forecasting accuracy. The dashboard does not forecast pollution.
