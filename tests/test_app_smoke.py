@@ -133,20 +133,18 @@ class UnitFourTests(unittest.TestCase):
         self.assertEqual(len(self.app.exception), 0)
         self.assertIn("same as simple linear regression", texts(self.app.info))
 
-    def test_chronological_split_and_test_size_controls(self):
-        self.app.selectbox(key="u4_split").set_value("Chronological (oldest rows train, newest rows test)").run()
-        self.assertEqual(len(self.app.exception), 0)
+    def test_test_size_slider_changes_the_split(self):
+        before = texts(self.app.caption)
         self.app.slider(key="u4_test_size").set_value(40).run()
         self.assertEqual(len(self.app.exception), 0)
-        self.assertIn("chronological", texts(self.app.caption))
+        self.assertIn("training", texts(self.app.caption))
+        self.assertNotEqual(before, texts(self.app.caption))
 
     def test_assumption_and_interpretation_tabs_for_both_models(self):
         for key in ("u4_assump_model", "u4_interp_model"):
             for option in ("Simple linear regression", "Multiple linear regression"):
                 self.app.radio(key=key).set_value(option).run()
                 self.assertEqual(len(self.app.exception), 0, (key, option))
-        text = texts(self.app.markdown)
-        self.assertIn("Variance Inflation", text + " ".join(str(e) for e in self.app.dataframe) + "Variance Inflation")
 
     def test_workflow_button_navigates_to_other_section(self):
         self.app.button(key="u4_goto_Unit I").click().run()

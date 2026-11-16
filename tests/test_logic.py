@@ -145,7 +145,7 @@ class RegressionMathTests(unittest.TestCase):
 
     def test_recovers_known_coefficients(self):
         frame = make_frame(2000, noise=0.5)
-        model = unit4.fit_model(frame, "m", "y", ["x1", "x2"], 0.2, "random")
+        model = unit4.fit_model(frame, "m", "y", ["x1", "x2"], 0.2)
         self.assertAlmostEqual(model.intercept, 5, delta=0.5)
         self.assertAlmostEqual(model.coefficients[0], 2, delta=0.05)
         self.assertAlmostEqual(model.coefficients[1], -3, delta=0.05)
@@ -163,29 +163,25 @@ class RegressionMathTests(unittest.TestCase):
         self.assertEqual((perfect["MAE"], perfect["R²"]), (0.0, 1.0))
         self.assertTrue(np.isnan(unit4.regression_metrics(np.ones(4), np.ones(4) * 2)["R²"]))
 
-    def test_r2_can_be_negative_and_baseline_is_zero_on_train(self):
+    def test_r2_can_be_negative_and_mean_prediction_is_zero(self):
         y = np.array([1.0, 2.0, 3.0, 4.0])
         self.assertLess(unit4.regression_metrics(y, y[::-1])["R²"], 0)
         self.assertAlmostEqual(unit4.regression_metrics(y, np.full(4, y.mean()))["R²"], 0.0)
 
     def test_split_is_reproducible_disjoint_and_complete(self):
-        for method in ("random", "chronological"):
-            train, test = unit4.split_indices(500, 0.2, method)
-            again = unit4.split_indices(500, 0.2, method)
-            self.assertTrue((train == again[0]).all() and (test == again[1]).all())
-            self.assertFalse(set(train) & set(test))
-            self.assertEqual(len(train) + len(test), 500)
-            self.assertEqual(len(test), 100)
-        train, test = unit4.split_indices(500, 0.2, "chronological")
-        self.assertLess(train.max(), test.min())               # no look-ahead
+        train, test = unit4.split_indices(500, 0.2)
+        again = unit4.split_indices(500, 0.2)
+        self.assertTrue((train == again[0]).all() and (test == again[1]).all())
+        self.assertFalse(set(train) & set(test))
+        self.assertEqual((len(train), len(test)), (400, 100))
 
     def test_no_data_leakage_test_rows_do_not_affect_the_fit(self):
         frame = make_frame(400)
-        before = unit4.fit_model(frame, "m", "y", ["x1"], 0.25, "random")
-        _, test_pos = unit4.split_indices(len(frame), 0.25, "random")
+        before = unit4.fit_model(frame, "m", "y", ["x1"], 0.25)
+        _, test_pos = unit4.split_indices(len(frame), 0.25)
         altered = frame.copy()
         altered.loc[test_pos, "y"] += 1000                      # corrupt ONLY the test rows
-        after = unit4.fit_model(altered, "m", "y", ["x1"], 0.25, "random")
+        after = unit4.fit_model(altered, "m", "y", ["x1"], 0.25)
         self.assertEqual(before.intercept, after.intercept)
         self.assertTrue((before.coefficients == after.coefficients).all())
         self.assertNotEqual(before.test_metrics["RMSE"], after.test_metrics["RMSE"])
@@ -193,37 +189,36 @@ class RegressionMathTests(unittest.TestCase):
     def test_models_compared_on_identical_rows_and_split(self):
         frame = make_frame(400)
         frame.loc[::7, "x2"] = np.nan                           # x2 has gaps; x1 does not
-        simple = unit4.fit_model(frame, "s", "y", ["x1"], 0.2, "random")
-        multiple = unit4.fit_model(frame, "m", "y", ["x1", "x2"], 0.2, "random")
+        simple = unit4.fit_model(frame, "s", "y", ["x1"], 0.2)
+        multiple = unit4.fit_model(frame, "m", "y", ["x1", "x2"], 0.2)
         self.assertNotEqual(len(simple.train), len(multiple.train))   # own rows differ ...
         table, n_train, n_test = unit4.compare_models(frame, simple, multiple)
         common = unit4.complete_cases(frame, ["y", "x1", "x2"])
-        a = unit4.fit_model(common, "a", "y", ["x1"], 0.2, "random")
-        b = unit4.fit_model(common, "b", "y", ["x1", "x2"], 0.2, "random")
-        self.assertTrue(a.train["datetime"].equals(b.train["datetime"]))   # ... comparison uses the same rows
+        a = unit4.fit_model(common, "a", "y", ["x1"], 0.2)
+        b = unit4.fit_model(common, "b", "y", ["x1", "x2"], 0.2)
+        self.assertTrue(a.train["datetime"].equals(b.train["datetime"]))   # ... the comparison uses the same rows
         self.assertTrue(a.test["datetime"].equals(b.test["datetime"]))
         self.assertEqual((n_train, n_test), (len(a.train), len(a.test)))
         self.assertAlmostEqual(table.loc["Simple linear regression", "RMSE"], a.test_metrics["RMSE"])
         self.assertAlmostEqual(table.loc["Multiple linear regression", "RMSE"], b.test_metrics["RMSE"])
-        self.assertIn("Baseline (always predict training mean)", table.index)
 
     def test_prediction_matches_equation(self):
-        model = unit4.fit_model(make_frame(300), "m", "y", ["x1", "x2"], 0.2, "random")
+        model = unit4.fit_model(make_frame(300), "m", "y", ["x1", "x2"], 0.2)
         manual = model.intercept + model.coefficients[0] * 50 + model.coefficients[1] * 20
         self.assertAlmostEqual(model.predict(np.array([50.0, 20.0])), manual)
 
     def test_guards(self):
         frame = make_frame(300)
         with self.assertRaises(unit4.ModelError):
-            unit4.fit_model(frame, "m", "y", [], 0.2, "random")           # no predictor
+            unit4.fit_model(frame, "m", "y", [], 0.2)                       # no predictor
         with self.assertRaises(unit4.ModelError):
-            unit4.fit_model(frame, "m", "y", ["y", "x1"], 0.2, "random")  # target as predictor
+            unit4.fit_model(frame, "m", "y", ["y", "x1"], 0.2)              # target as predictor
         with self.assertRaises(unit4.ModelError):
-            unit4.fit_model(frame.head(10), "m", "y", ["x1"], 0.2, "random")   # too few rows
+            unit4.fit_model(frame.head(10), "m", "y", ["x1"], 0.2)          # too few rows
         sparse = frame.copy()
-        sparse.loc[5:, "x2"] = np.nan                                      # only 5 complete rows
+        sparse.loc[5:, "x2"] = np.nan                                       # only 5 complete rows
         with self.assertRaises(unit4.ModelError):
-            unit4.fit_model(sparse, "m", "y", ["x1", "x2"], 0.2, "random")
+            unit4.fit_model(sparse, "m", "y", ["x1", "x2"], 0.2)
 
     def test_candidates_exclude_time_flags_constants_and_sparse(self):
         frame = make_frame(100)
@@ -233,13 +228,12 @@ class RegressionMathTests(unittest.TestCase):
         frame.loc[:4, "sparse"] = 1.0
         self.assertEqual(unit4.numeric_candidates(frame), ["x1", "x2", "y"])
 
-    def test_standardised_coefficients(self):
-        model = unit4.fit_model(make_frame(500, noise=2), "m", "y", ["x1", "x2"], 0.2, "random")
-        manual = model.coefficients * model.train[["x1", "x2"]].std().to_numpy() / model.train["y"].std()
-        self.assertTrue(np.allclose(unit4.standardized_coefficients(model), manual))
 
+class AssumptionTests(unittest.TestCase):
+    def checks(self, frame, predictors):
+        model = unit4.fit_model(frame, "m", "y", predictors, 0.2)
+        return {c["Assumption"]: c["violated"] for c in unit4.run_assumption_checks(model)["checks"]}, model
 
-class DiagnosticTests(unittest.TestCase):
     def test_vif_detects_collinearity(self):
         rng = np.random.default_rng(1)
         a = rng.normal(size=500)
@@ -248,58 +242,46 @@ class DiagnosticTests(unittest.TestCase):
         self.assertTrue((unit4.variance_inflation_factors(independent) < 1.2).all())
         self.assertTrue((unit4.variance_inflation_factors(collinear) > 100).all())
 
-    def test_durbin_watson(self):
+    def test_well_behaved_data_passes_all_checks(self):
+        flags, _ = self.checks(make_frame(1500), ["x1", "x2"])
+        self.assertEqual(len(flags), 5)
+        self.assertTrue(all(value is False for value in flags.values()), flags)
+
+    def test_simple_regression_has_no_vif(self):
+        flags, model = self.checks(make_frame(300), ["x1"])
+        self.assertIsNone(flags["No multicollinearity"])
+        self.assertIsNone(unit4.run_assumption_checks(model)["vif"])
+
+    def test_curved_relationship_flags_linearity(self):
+        frame = make_frame(1500)
+        frame["y"] = (frame["x1"] - 50) ** 2 + np.random.default_rng(1).normal(size=1500)
+        flags, _ = self.checks(frame, ["x1"])
+        self.assertTrue(flags["Linearity"])
+
+    def test_funnel_flags_constant_variance(self):
         rng = np.random.default_rng(2)
-        self.assertAlmostEqual(unit4.durbin_watson(rng.normal(size=5000)), 2.0, delta=0.1)
-        self.assertLess(unit4.durbin_watson(np.cumsum(rng.normal(size=500))), 0.5)
+        frame = make_frame(1500)
+        frame["y"] = 5 + 2 * frame["x1"] + rng.normal(size=1500) * (frame["x1"] - 20)
+        flags, _ = self.checks(frame, ["x1"])
+        self.assertTrue(flags["Constant variance (homoscedasticity)"])
 
-    def test_heteroscedasticity_and_nonlinearity_flags(self):
-        rng = np.random.default_rng(3)
-        x = rng.uniform(1, 10, 1500).reshape(-1, 1)
-        clean_resid = rng.normal(size=1500)
-        funnel_resid = rng.normal(size=1500) * x[:, 0]                  # spread grows with x
-        self.assertGreater(unit4.breusch_pagan(clean_resid, x)[1], 0.01)
-        self.assertLess(unit4.breusch_pagan(funnel_resid, x)[1], 0.001)
-        curved = x[:, 0] ** 2 + rng.normal(size=1500)
-        intercept, coefs = unit4.fit_ols(x, curved)
-        fitted = intercept + x @ coefs
-        self.assertLess(unit4.ramsey_reset(curved, fitted, x)[1], 0.001)
-        straight = 3 * x[:, 0] + rng.normal(size=1500)
-        intercept, coefs = unit4.fit_ols(x, straight)
-        self.assertGreater(unit4.ramsey_reset(straight, intercept + x @ coefs, x)[1], 0.01)
-
-    def test_run_diagnostics_on_good_and_bad_models(self):
-        good = unit4.run_diagnostics(unit4.fit_model(make_frame(800), "m", "y", ["x1", "x2"], 0.2, "random"))
-        self.assertEqual(len(good["checks"]), 5)
-        self.assertEqual(good["vif"].shape, (2,))
-        by_name = {c["Assumption"]: c["violated"] for c in good["checks"]}
-        # Data built to satisfy the assumptions: these four must pass. (Breusch-Pagan is left out
-        # because a correct test rejects ~5% of clean random data; it is tested with a funnel above.)
-        for name in ("Linearity", "Independence of errors", "Normality of residuals", "No multicollinearity"):
-            self.assertIs(by_name[name], False, name)
-        simple = unit4.run_diagnostics(unit4.fit_model(make_frame(300), "m", "y", ["x1"], 0.2, "random"))
-        self.assertIsNone(simple["vif"])                                  # needs 2+ predictors
-        self.assertIsNone(simple["checks"][-1]["violated"])
-        trending = make_frame(600)
-        # y depends on x1 plus a slowly drifting level -> errors in a row are alike
-        trending["y"] = 5 + 2 * trending["x1"] + np.cumsum(np.random.default_rng(5).normal(size=600))
-        bad = unit4.run_diagnostics(unit4.fit_model(trending, "m", "y", ["x1"], 0.2, "random"))
-        self.assertTrue(bad["checks"][1]["violated"])                     # serial correlation flagged
-
-    def test_coefficient_p_values_flag_useless_predictor(self):
+    def test_drifting_errors_flag_independence(self):
         frame = make_frame(600)
-        frame["noise"] = np.random.default_rng(9).normal(size=600)
-        model = unit4.fit_model(frame, "m", "y", ["x1", "noise"], 0.2, "random")
-        p_values = model.statistics["p_value"].iloc[1:].to_numpy()
-        self.assertLess(p_values[0], 0.001)
-        self.assertGreater(p_values[1], 0.01)
+        frame["y"] = 5 + 2 * frame["x1"] + np.cumsum(np.random.default_rng(5).normal(size=600))
+        flags, _ = self.checks(frame, ["x1"])
+        self.assertTrue(flags["Independence of errors"])
 
+    def test_skewed_errors_flag_normality(self):
+        frame = make_frame(1500)
+        frame["y"] = 5 + 2 * frame["x1"] + np.random.default_rng(3).exponential(5, 1500) ** 2
+        flags, _ = self.checks(frame, ["x1"])
+        self.assertTrue(flags["Normality of residuals"])
 
-class FormattingTests(unittest.TestCase):
-    def test_p_value_format(self):
-        self.assertEqual(unit4.fmt_p(0.0), "<0.001")
-        self.assertEqual(unit4.fmt_p(0.0456), "0.046")
-        self.assertEqual(unit4.fmt_p(float("nan")), "n/a")
+    def test_collinear_predictors_flag_multicollinearity(self):
+        frame = make_frame(600)
+        frame["x2"] = frame["x1"] * 2 + np.random.default_rng(4).normal(scale=0.05, size=600)
+        flags, _ = self.checks(frame, ["x1", "x2"])
+        self.assertTrue(flags["No multicollinearity"])
 
 
 if __name__ == "__main__":

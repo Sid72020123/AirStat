@@ -34,22 +34,11 @@ def correlation_heatmap(matrix: pd.DataFrame, title: str) -> go.Figure:
 
 
 def scatter_with_trend(
-    frame: pd.DataFrame,
-    x: str,
-    y: str,
-    x_label: str,
-    y_label: str,
-    color: str | None = None,
-    color_label: str | None = None,
+    frame: pd.DataFrame, x: str, y: str, x_label: str, y_label: str
 ) -> go.Figure:
-    """Scatter plot with an ordinary least-squares trend line (visual aid)."""
+    """Scatter plot with a least-squares trend line (visual aid)."""
     figure = px.scatter(
-        frame,
-        x=x,
-        y=y,
-        color=color,
-        opacity=0.6,
-        labels={x: x_label, y: y_label, **({color: color_label} if color else {})},
+        frame, x=x, y=y, opacity=0.6, labels={x: x_label, y: y_label},
         hover_data={"datetime": "|%Y-%m-%d %H:%M"} if "datetime" in frame else None,
         title=f"{y_label} vs {x_label}",
     )
@@ -57,10 +46,7 @@ def scatter_with_trend(
         slope, intercept = np.polyfit(frame[x], frame[y], 1)
         xs = np.array([frame[x].min(), frame[x].max()])
         figure.add_scatter(
-            x=xs,
-            y=intercept + slope * xs,
-            mode="lines",
-            name="Trend line (OLS)",
+            x=xs, y=intercept + slope * xs, mode="lines", name="Trend line",
             line={"color": LINE_COLOR, "width": 3},
         )
     return figure

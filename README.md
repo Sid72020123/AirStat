@@ -203,16 +203,14 @@ data" instead of an AQI.
 correlation (Pearson, Spearman, heatmap, interactive scatter), simple linear
 regression, multiple linear regression, regression assumptions, model
 evaluation, interpretation, and the analytics workflow. Models are fitted with
-NumPy least squares (no extra libraries), on complete-case rows only (missing
-values are dropped, zeros are kept), using a fixed-seed train/test split. A
-chronological split is also available, which is a stricter test for time-ordered
-data. The dependent variable is never offered as a predictor, and timestamps/IDs
-are never used as predictors. The maths was cross-checked against scikit-learn
-and statsmodels while developing it.
+NumPy least squares (no extra libraries) on complete-case rows only (missing
+values are dropped, zeros are kept), using a fixed-seed random train/test
+split. The dependent variable is never offered as a predictor, and
+timestamps/IDs are never used as predictors.
 
 The dashboard uses one automatically selected station at a time. Some cities
 may not have a station with recent data or all supported variables (wind speed is
 often missing; Unit IV uses whichever variables exist). Correlation and
 regression describe association only; they do not establish causation. Hourly
-readings are autocorrelated, so p-values and test scores can look better than
+readings are similar to their neighbours, so test scores can look better than
 real forecasting accuracy. The dashboard does not forecast pollution.

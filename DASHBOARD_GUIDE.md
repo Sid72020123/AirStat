@@ -521,20 +521,20 @@ For example:
 
 ## 11. Unit IV — Correlation, Regression and Predictive Analytics
 
-Choose **Unit IV** in the sidebar. A **Modeling setup** box sets the test share (10–40%) and the
-split method for all regression tabs.
+Choose **Unit IV** in the sidebar. A **Modeling setup** box sets the test share (10–40%); the
+train/test split uses a fixed random seed so results are the same every run.
 
-1. **Correlation** – pick two variables to see Pearson r, Spearman ρ, p-values, a plain-language
+1. **Correlation** – pick two variables to see Pearson r, Spearman ρ, a plain-language
    interpretation, an interactive scatter plot with a trend line, and a heatmap of selectable
    variables. Correlation does not imply causation.
 2. **Simple Linear Regression** – choose Y and X, see slope, intercept, the equation, a scatter
    plot with the regression line, actual vs predicted values, and predict Y from a typed X.
 3. **Multiple Linear Regression** – choose Y and several X variables; see the intercept,
-   coefficients, standardised effects, equation and a prediction form.
+   coefficients, equation and a prediction form.
 4. **Regression Assumptions** – linearity, independence, homoscedasticity, normality and
-   multicollinearity with residual plots, Q-Q plot, VIF and warnings.
-5. **Model Evaluation** – MAE, MSE, RMSE and R² on unseen test rows, a fair simple-vs-multiple
-   comparison on identical rows, and a training-vs-test over-fitting check.
+   multicollinearity with residual plots, Q-Q plot, VIF and simple warnings.
+5. **Model Evaluation** – MAE, MSE, RMSE and R² on unseen test rows, and a fair simple-vs-multiple
+   comparison on identical rows.
 6. **Regression Interpretation** – equation, coefficients, direction, evaluation, an automatic
    summary written from the real results, and the model's limitations.
 7. **Analytics Workflow** – the eight-step workflow with live values and shortcuts to the other
