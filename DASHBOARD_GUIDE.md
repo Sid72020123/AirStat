@@ -518,7 +518,6 @@ For example:
 > PM2.5 observations exceeded 60 µg/m³. This is an observed sample proportion,
 > not a guarantee about future readings or every location in Pune.
 
-
 ## 11. Unit IV — Correlation, Regression and Predictive Analytics
 
 Choose **Unit IV** in the sidebar. A **Modeling setup** box sets the test share (10–40%); the
